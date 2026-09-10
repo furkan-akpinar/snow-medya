@@ -10,6 +10,10 @@
 </p>
 
 <p align="center">
+  <a href="https://snow-medya.furkan-akpinar.workers.dev/"><strong>Canlı siteyi ziyaret et ↗</strong></a>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/JavaScript-ES_Modules-00fff3?style=flat-square&amp;labelColor=151918" alt="JavaScript ES Modules" />
   <img src="https://img.shields.io/badge/Vite-8.2.2-00fff3?style=flat-square&amp;labelColor=151918" alt="Vite 8.2.2" />
   <img src="https://img.shields.io/badge/GSAP-3.13.0-00fff3?style=flat-square&amp;labelColor=151918" alt="GSAP 3.13.0" />
