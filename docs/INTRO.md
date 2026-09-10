@@ -15,23 +15,44 @@ alt kısmını kısmen kesiyor; görünmeyen alan için birebir eşleşme iddias
 | ---------------------------------------- | ----------------------- | -------------------------- |
 | WE ARE harflerinin perspektifli açılması | yaklaşık 0,7–1,4 sn     | 0,55–1,48 sn               |
 | Marka harflerinin soldan sağa açılması   | yaklaşık 1,2–1,9 sn     | 1,05–2,00 sn               |
-| Küçük medyanın yer açarak görünmesi      | yaklaşık 1,8–2,8 sn     | 1,75–2,65 sn               |
-| Aynı medyanın tam ekrana büyümesi        | yaklaşık 3,9–4,6 sn     | 3,25–4,00 sn               |
-| Açık manifesto yüzeyinin yükselmesi      | yaklaşık 5,2–5,8 sn     | 4,30–4,85 sn               |
-| Manifesto harflerinin sırayla düzleşmesi | yaklaşık 5,5–6,7 sn     | 4,40–5,85 sn               |
+| Küçük medyanın yer açarak görünmesi      | yaklaşık 1,8–2,8 sn     | 1,75–2,20 sn               |
+| Aynı medyanın tam ekrana büyümesi        | yaklaşık 3,9–4,6 sn     | 2,20–2,65 sn               |
+| Açık manifesto yüzeyinin yükselmesi      | yaklaşık 5,2–5,8 sn     | 2,95–3,50 sn               |
+| Manifesto harflerinin sırayla düzleşmesi | yaklaşık 5,5–6,7 sn     | 3,05–4,50 sn               |
 
 *Uygulama süreleri font/poster hazırlığından sonra başlar. Referans zamanları
 kayıttaki karelerden yaklaşık ölçüldü; metinler ve font oranları farklıdır.
 Mevcut Barlow Condensed korunur; Manuka ile birebir font eşleşmesi yoktur.
 
-### Video bekleme süresi revizesi
+### Güncel hızlı büyüme ayarı
+
+Kullanıcının videonun hâlâ geç büyüdüğünü belirtmesi üzerine küçük alanın
+açılması 0,45 saniyeye indirildi, küçük alandaki bekleme kaldırıldı ve tam
+ekrana büyüme 0,45 saniye yapıldı. Video 2,20. saniyede büyümeye başlar ve
+2,65. saniyede tam ekran olur. Yazı hareketlerinin süreleri korunur.
+
+src/main.js içindeki mediaStart, mediaRevealDuration, mediaHoldDuration,
+mediaExpandDuration ve fullVideoHoldDuration değerleri tek ayar noktasıdır.
+Aşama etiketleri ve takip eden animasyonlar bu değerlerden hesaplanır;
+aynı başlangıç zamanını birden fazla satırda elle değiştirmek gerekmez.
+
+Son doğrulamada gerçek CSS viewport'lar 1440×900 ve 390×844 ölçüldü.
+Belge hazırlığı dahil video masaüstünde 2,73, mobilde 2,68 saniyede tam
+ekran oldu. Aynı video elemanı ve tek metadata yüklemesi korundu; yatay
+taşma, intro sırasında kaydırma veya font boyutu değişmesi görülmedi.
+Son harf dönüşümleri temizlendi ve mobilde normal kaydırma çalıştı.
+Yeni ekran kayıtları ve ölçümler yalnızca artifacts/intro-fast/ içindedir.
+Check, build, format:check ve check:release kontrolleri başarılıdır.
+
+### Önceki video bekleme süresi revizesi
 
 **Kayıt 2026-09-10 210113.mp4** (6,85 sn, 1918×948) incelendikten sonra,
 kullanıcının beklemeyi yarıya indirme isteği uygulandı. Küçük medya açıldıktan
 sonraki bekleme 1,2 saniyeden 0,6 saniyeye; video tam ekran olduktan sonraki
 bekleme 0,6 saniyeden 0,3 saniyeye indirildi. Büyümenin, yazı hareketlerinin ve
-harf gecikmelerinin süreleri korunur. Yukarıdaki uygulama sütunu güncel
-zamanlamayı gösterir; toplam sekans yaklaşık 6,75 yerine 5,85 saniyedir.
+harf gecikmelerinin süreleri korundu. Bu önceki revizede toplam sekans
+yaklaşık 6,75 yerine 5,85 saniyeydi; yukarıdaki tablo son hızlı büyüme
+revizesinin zamanlamasını gösterir.
 
 Bu süre revizesi gerçek 1440×900 ve 390×844 CSS viewport'larda tekrar
 kaydedilip ölçüldü. Tam ekran ile manifesto başlangıcı arasında her iki

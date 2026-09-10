@@ -339,6 +339,15 @@ import { createAmbientVideos } from './ambient-video.js';
       gsap.set(section, { y: overlap });
       placeCover();
       opening.dataset.introPhase = 'letters';
+      // Video zamanlaması (saniye). Sonraki aşamalar bu değerlerden hesaplanır.
+      const mediaStart = 1.75;
+      const mediaRevealDuration = 0.45;
+      const mediaHoldDuration = 0;
+      const mediaExpandDuration = 0.45;
+      const fullVideoHoldDuration = 0.3;
+      const expandStart = mediaStart + mediaRevealDuration + mediaHoldDuration;
+      const fullVideoStart = expandStart + mediaExpandDuration;
+      const manifestoStart = fullVideoStart + fullVideoHoldDuration;
       // One automatic sequence owns the media and heading; it has no ScrollTrigger.
       openingTimeline = gsap.timeline({ onComplete: finish });
       openingTimeline.to(
@@ -367,30 +376,30 @@ import { createAmbientVideos } from './ambient-video.js';
         },
         1.05,
       );
-      openingTimeline.set(cover, { autoAlpha: 1 }, 1.75);
+      openingTimeline.set(cover, { autoAlpha: 1 }, mediaStart);
       openingTimeline.call(
         () => {
           opening.dataset.introPhase = 'small-media';
         },
         [],
-        1.75,
+        mediaStart,
       );
       openingTimeline.to(
         inset,
         {
           [mobile ? 'height' : 'width']: mobile ? slot.height : slot.width,
-          duration: 0.9,
+          duration: mediaRevealDuration,
           ease: 'power3.inOut',
           onUpdate: placeCover,
         },
-        1.75,
+        mediaStart,
       );
       openingTimeline.call(
         () => {
           opening.dataset.introPhase = 'expanding';
         },
         [],
-        3.25,
+        expandStart,
       );
       openingTimeline.to(
         cover,
@@ -400,28 +409,28 @@ import { createAmbientVideos } from './ambient-video.js';
           width: () => opening.clientWidth,
           height: () => opening.clientHeight,
           borderRadius: 0,
-          duration: 0.75,
+          duration: mediaExpandDuration,
           ease: 'power3.inOut',
         },
-        3.25,
+        expandStart,
       );
-      openingTimeline.set(hero, { autoAlpha: 0 }, 4);
+      openingTimeline.set(hero, { autoAlpha: 0 }, fullVideoStart);
       openingTimeline.call(
         () => {
           opening.dataset.introPhase = 'full-video';
         },
         [],
-        4,
+        fullVideoStart,
       );
-      openingTimeline.to(controls, { autoAlpha: 1, duration: 0.35 }, 4.15);
+      openingTimeline.to(controls, { autoAlpha: 1, duration: 0.35 }, fullVideoStart + 0.15);
       openingTimeline.call(
         () => {
           opening.dataset.introPhase = 'manifesto';
         },
         [],
-        4.3,
+        manifestoStart,
       );
-      openingTimeline.to(section, { y: 0, duration: 0.55, ease: 'power3.inOut' }, 4.3);
+      openingTimeline.to(section, { y: 0, duration: 0.55, ease: 'power3.inOut' }, manifestoStart);
       openingTimeline.to(
         titleChars,
         {
@@ -433,7 +442,7 @@ import { createAmbientVideos } from './ambient-video.js';
           stagger: 0.032,
           ease: 'power3.out',
         },
-        4.4,
+        manifestoStart + 0.1,
       );
     } else finish();
     const resize = () => {
