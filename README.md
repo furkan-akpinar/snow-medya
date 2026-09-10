@@ -1,112 +1,150 @@
-# Snow Medya
+<p align="center">
+  <img src="public/assets/favicon.svg" alt="Snow Medya marka simgesi" width="76" height="76" />
+</p>
 
-Kişisel kayak deneyimini profesyonel çekim ekibiyle sinematik bir filme dönüştürme hizmetinin sitesi.
-HTML, CSS ve vanilla JavaScript kullanır. Vite geliştirme sunucusu ve üretim derlemesini sağlar.
+<h1 align="center">Snow Medya</h1>
+
+<p align="center">
+  <strong>Sen kay. Anın film olsun.</strong><br />
+  Kişisel kayak deneyimini sinematik bir hikâyeye dönüştüren portföy projesi.
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/JavaScript-ES_Modules-00fff3?style=flat-square&amp;labelColor=151918" alt="JavaScript ES Modules" />
+  <img src="https://img.shields.io/badge/Vite-8.2.2-00fff3?style=flat-square&amp;labelColor=151918" alt="Vite 8.2.2" />
+  <img src="https://img.shields.io/badge/GSAP-3.13.0-00fff3?style=flat-square&amp;labelColor=151918" alt="GSAP 3.13.0" />
+  <img src="https://img.shields.io/badge/Lenis-1.3.1-00fff3?style=flat-square&amp;labelColor=151918" alt="Lenis 1.3.1" />
+</p>
+
+<p align="center">
+  <a href="#konsept">Konsept</a> ·
+  <a href="#ekran-goruntuleri">Ekran görüntüleri</a> ·
+  <a href="#ozellikler">Öne çıkanlar</a> ·
+  <a href="#teknoloji">Teknoloji</a> ·
+  <a href="#kurulum">Kurulum</a> ·
+  <a href="#kontroller">Kontroller</a>
+</p>
+
+---
+
+<a id="konsept"></a>
+
+## Konsept
+
+Snow Medya, kayak tutkunlarının pistte geçirdikleri anları profesyonel bir çekim ekibiyle sinematik ve etkileyici videolara dönüştürmek üzerine kurulu bir portföy projesidir. Çekim planından pistte çekime, kurgudan renge uzanan yaklaşımı; büyük tipografi, kış sporları görüntüleri ve hareketli bir anlatımla sunar.
+
+Film seçkisindeki dört çalışma **konsept sunumlarıdır**; tamamlanmış müşteri işleri değildir. İletişim sayfası bilgilendirme amaçlıdır; çalışan bir mesaj gönderim altyapısı veya rezervasyon sistemi içermez.
+
+<a id="ekran-goruntuleri"></a>
+
+## Ekran görüntüleri
+
+Çalışan yerel üretim çıktısından alınmıştır. Masaüstünde **1440×900**, mobilde **390×844** gerçek CSS viewport kullanılmıştır. Ana sayfa görüntülerinde intro tamamlanmış; kayak videosu, logo ve manifesto başlığı görünür durumdadır.
+
+![Masaüstü ana sayfa: kayak videosu üzerinde Snow Medya logosu ve altında manifesto başlığı](docs/screenshots/desktop.webp)
+
+<p align="center">
+  <img src="docs/screenshots/mobile.webp" alt="Mobil ana sayfa: video, merkezde logo ve iki satırlı manifesto başlığı" width="280" />
+  &nbsp;
+  <img src="docs/screenshots/menu-mobile.webp" alt="Mobil turkuaz menü: Filmler, Çekimler, Ekibimiz ve İletişim" width="280" />
+</p>
+
+<p align="center"><sub>Mobil ana sayfa · Tam ekran menü</sub></p>
+
+<a id="ozellikler"></a>
+
+## Öne çıkanlar
+
+- **Kesintisiz açılış:** perspektifli giriş yazıları, aynı video alanının büyümesi ve manifesto harflerinin yükselişi tek otomatik sekans oluşturur. Sonrasında normal kaydırma devam eder.
+- **Güçlü görsel dil:** koyu zemin, turkuaz vurgular, açık manifesto alanı ve büyük Barlow Condensed başlıklar.
+- **Tam ekran menü:** 01–04 numaralı Filmler, Çekimler, Ekibimiz ve İletişim bağlantıları; seçimde ve Escape ile kapanma.
+- **Hareketli seçki:** dört konseptin detay sayfaları, videolu proje kartları, sıradaki projeye geçiş ve açılır çekim aşamaları.
+- **Ekrana uygun medya:** yerel masaüstü/mobil video sürümleri, poster desteği ve görünürlüğe göre oynatma. Arka plan videoları sessiz ve döngülüdür.
+- **Hareket azaltma desteği:** otomatik intro ve arka plan videoları yerine okunabilir son yerleşim ve posterler; klavye odağı ve içeriğe geçiş bağlantısı.
+
+<a id="teknoloji"></a>
+
+## Teknoloji
+
+| Katman                   | Kullanılan yapı                                               |
+| ------------------------ | ------------------------------------------------------------- |
+| Arayüz                   | HTML5, özel CSS, vanilla JavaScript / ES Modules              |
+| Derleme ve geliştirme    | Vite 8.2.2                                                    |
+| Animasyon                | Yerel GSAP 3.13.0 ve ScrollTrigger                            |
+| Kaydırma                 | Yerel Lenis 1.3.1                                             |
+| Tipografi                | Yerel Barlow Condensed ve Inter fontları                      |
+| Kod biçimi ve kontroller | Prettier 3.9.6, Node.js sözdizimi ve varlık kontrol betikleri |
+
+Paket sürümleri [package.json](package.json) ve [package-lock.json](package-lock.json), yerel kütüphane ve medya kayıtları [provenance.json](public/assets/provenance.json) içinde tutulur. Uygulama hash rotaları kullanır; sunucuda her sayfa için ayrı yönlendirme kuralı gerektirmez.
+
+<a id="kurulum"></a>
 
 ## Kurulum
 
-Node.js 24 önerilir. Desteklenen sürümler `package.json` içindeki `engines` alanındadır.
-Proje klasöründe PowerShell ile:
+**Node.js 24** önerilir (`.nvmrc`). Desteklenen sürüm aralığı `^22.12.0 || >=24.0.0`; npm gerekir.
 
 ```powershell
+git clone https://github.com/furkan-akpinar/snow-medya.git
+cd snow-medya
 npm.cmd ci
 npm.cmd run dev
 ```
 
-Geliştirme adresi: `http://127.0.0.1:5173/`. Terminali açık tutun.
-Port kullanımdaysa başka bir port seçin: `npm.cmd run dev -- --port 5174`.
+Geliştirme sunucusu: `http://127.0.0.1:5173/`. Komutlar Windows PowerShell içindir; diğer ortamlarda `npm.cmd` yerine `npm` kullanılabilir. Port doluysa `npm.cmd run dev -- --port 5174` ile değiştirilebilir.
 
-## Kontrol ve build
+### Üretim derlemesi ve önizleme
 
 ```powershell
-npm.cmd run check
-npm.cmd run format:check
-npm.cmd run check:release
 npm.cmd run build
 npm.cmd run preview
 ```
 
-Son komut `dist/` çıktısını `http://127.0.0.1:4173/` üzerinde sunar.
-`npm.cmd run format` kaynakları biçimlendirir. Diğer işletim sistemlerinde `npm.cmd` yerine `npm` kullanın.
+Derleme önce `check` komutunu çalıştırır, ardından statik çıktıyı `dist/` içine yazar. Önizleme bu çıktıyı `http://127.0.0.1:4173/` adresinde sunar; kaynak değişikliklerinden sonra yeniden derleme gerekir. [Vite yapılandırmasındaki](vite.config.js) `base: './'` ayarı alt klasörden sunmayı destekler.
 
-## Yapı
+<a id="kontroller"></a>
 
-- `index.html`: header, tam ekran menü, footer ve video oynatıcı.
-- `src/main.js`: içerik, hash rotaları, kaydırma sahneleri ve video yaşam döngüsü.
-- `src/ambient-video.js`: görünür alan, ekran boyutu ve dialog durumuna göre arka plan videoları.
-- `src/styles.css`: yerleşim, responsive kurallar ve hareket azaltma stilleri.
-- `public/assets/`: yerel görüntüler, videolar, fontlar ve animasyon kütüphaneleri.
-- `public/assets/provenance.json`: medya kaynakları, üreticiler ve lisans kayıtları.
-- `public/assets/licenses/`: font ve Lenis lisansları. GSAP bildirimleri kendi dosyalarında korunur.
-- `scripts/`: varlık ve teslim kontrolleri.
-- `docs/QA.md`: tarayıcı testleri ve doğrulama sınırları.
-- `docs/INTRO.md`: video büyümesi ve başlık girişinin güncel doğrulaması.
-- `docs/PERSONAL-SKI.md`: kişisel kayak çekimi metinleri, header ve intro logosu revizesi.
+## Kontroller
 
-Rotalar: `/#/`, `/#/isler`, `/#/hizmetler`, `/#/hakkimizda`, `/#/iletisim` ve
-`/#/is/{ilk-iz,yercekimine-karsi,zirvede-bir-gun,kis-bitmeden}`.
-Hash rotaları nedeniyle sunucuda ayrı sayfa yönlendirme kuralı gerekmez.
-Vite `base: './'` ayarı alt klasörden sunmayı destekler.
+| Komut                       | Kapsam                                                                                                    |
+| --------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `npm.cmd run check`         | İki uygulama JavaScript dosyasının sözdizimi ve gerekli yerel medya, font, kütüphane dosyalarının varlığı |
+| `npm.cmd run format:check`  | Kaynak, yapılandırma ve dokümantasyon dosyalarının Prettier biçimi                                        |
+| `npm.cmd run check:release` | Dosya boyutu sınırı, belirli anahtar kalıpları, medya kaynak kayıtları ve lisans dosyalarının tutarlılığı |
+| `npm.cmd run build`         | `check` ve Vite üretim derlemesi                                                                          |
 
-Menü ve footer etiketleri Filmler, Çekimler, Ekibimiz ve İletişim'dir;
-mevcut rota adresleri korunur. Introda header ile aynı Snow Medya logosu
-%75 opaklıkta dekoratif bir katmandır; oynatıcı açmaz. Otomatik video ve
-manifesto geçişinin zamanlaması korunur.
+`npm.cmd run format` dosyaları biçimlendirerek değiştirir. Otomatik birim veya uçtan uca tarayıcı test paketi yoktur; bu komutlar görsel ve etkileşimli kontrollerin yerine geçmez. `check:release` kapsamlı bir gizli bilgi tarayıcısı değildir. Mevcut tarayıcı kontrol kayıtları: [genel QA](docs/QA.md), [intro](docs/INTRO.md), [metinler, header ve logo](docs/PERSONAL-SKI.md).
 
-Animasyonlar yerel GSAP/ScrollTrigger ve Lenis ile çalışır. Sayfa değişiminde
-timeline, observer ve sayfa dinleyicileri temizlenir. Açılıştaki perspektifli yazılar,
-video büyümesi ve manifesto harfleri masaüstü ve mobilde tek otomatik sekansla
-oynar. Yaklaşık 5,2 saniyelik açılıştan sonra normal kaydırma devam eder;
-kaydırma introyu yeniden başlatmaz.
-Sonraki tipografi satırları normal akışta kendi alanlarını korur; masaüstünde
-grup olarak sabitlenip yukarı ilerler, mobilde doğal akışta kalır. Ölçümler
-fontlar hazırken yapılır ve ekran değişiminde yenilenir. Hareket azaltma tercihi
-otomatik video, giriş ve sabitlemeleri kapatır.
+## Proje yapısı
 
-## Medya ve içerik
+```text
+index.html             Header, menü, footer ve ortak sayfa kabuğu
+src/main.js            İçerikler, proje seçkisi, rotalar ve animasyonlar
+src/ambient-video.js   Arka plan videolarının yüklenmesi ve oynatılması
+src/styles.css         Yerleşim, tipografi ve responsive kurallar
+public/assets/         Videolar, posterler, görseller, fontlar ve kütüphaneler
+scripts/               Varlık ve teslim kontrol betikleri
+docs/                  Kontrol notları ve README ekran görüntüleri
+```
 
-4274798 numaralı Pexels videosunun 1920×1080 sürümü yaklaşık 11,62 MB,
-720×1280 mobil sürümü 3,25 MB'tır. İkisi aynı 14,12 saniyelik kaynaktan
-üretilmiştir. Mobil kırpma kayakçıyı takip eder. Başlangıçta yalnızca ekrana
-uygun sürüm seçilir; oynatıcı açıkken arka plan durur. Her sürümün kendi posteri vardır.
+**İçerik düzenleme:** proje adları ve açıklamaları `src/main.js` içindeki `projects` dizisinden; sayfa ve çekim metinleri aynı dosyadaki şablonlardan değiştirilir. Ortak menü, header ve footer metinleri `index.html` içindedir. Medya değişiklikleriyle birlikte `public/assets/provenance.json` kaydı da güncellenmelidir.
 
-Hakkımızda bloğu ve ilk üç proje yerel Pexels videoları kullanır. Boyutlar
-ondalık MB cinsindendir:
+`node_modules/`, `dist/`, yerel ortam dosyaları ve geçici test kayıtları `.gitignore` ile depo dışında tutulur.
 
-| Alan / Pexels kimliği       | Masaüstü           | Mobil                                             | Süre    |
-| --------------------------- | ------------------ | ------------------------------------------------- | ------- |
-| Hakkımızda / 4161595        | 1600×900 · 3,19 MB | 720×1280 · 1,66 MB                                | 12 sn   |
-| İlk İz / 11246371           | 1280×720 · 4,81 MB | 720×960 · 2,32 MB                                 | 9,5 sn  |
-| Yerçekimine Karşı / 6947516 | 1600×900 · 6,06 MB | Kart: 960×540 · 2,42 MB; detay: 720×960 · 2,42 MB | 10 sn   |
-| Zirvede Bir Gün / 4185345   | 1600×844 · 3,75 MB | 720×960 · 1,24 MB                                 | 8,38 sn |
+## Medya, fontlar ve lisanslar
 
-Yeni videolar sessiz H.264 MP4'tür; her sürüm aynı çekimden oluşturulan bir
-JPEG poster taşır. Snowboard kartının mevcut kısa yüksekliği için yatay mobil
-sürüm seçilir. Kayak ve snowboard dikey sürümlerinin kırpması sporcuyu takip eder.
-Videolar görünür alanda yüklenip oynar; ekran dışında, başka kartın altında,
-menü veya film açıkken durur. 850 CSS piksel ve altında mobil kaynak seçilir;
-bir alan aynı anda iki sürüm indirmez. Autoplay reddinde ve hareket azaltmada
-poster görünür. Kaynak sayfaları, üreticiler, düzenlemeler, dosya boyutları ve
-SHA-256 kayıtları `public/assets/provenance.json` içindedir.
+Görüntüler üçüncü taraf stok içeriklerdir; Snow Medya tarafından çekildikleri iddia edilmez. Dosya bazında kaynak, üretici, lisans, video boyutu ve düzenleme bilgileri [medya kaynak kaydında](public/assets/provenance.json) bulunur.
 
-Görüntüler stoktur; proje seçkisi konsept çalışmalardan oluşur. Gerçek müşteri
-projesi veya özgün çekim iddiası taşımaz. İletişim backend'i ve resmi iletişim
-bilgileri henüz yoktur. Gönderilmiş mesaj taklit edilmez.
+| Kaynak                  | Mevcut atıflar ve lisans kayıtları                                                                                                                                              |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Pexels                  | Videolar: Adrien JACTA (intro / 4274798), Ella Wei, Igor Deshkin, Grisha Grishkoff, Be The Observer. Fotoğraf: Mikhail Nilov. [Pexels lisansı](https://www.pexels.com/license/) |
+| Unsplash                | Fotoğraflar: Tino Rischawy ve Lorin Both. [Unsplash lisansı](https://unsplash.com/license)                                                                                      |
+| Fontlar                 | SIL Open Font License 1.1: [Barlow Condensed](public/assets/licenses/Barlow-OFL.txt) · [Inter](public/assets/licenses/Inter-OFL.txt)                                            |
+| Animasyon kütüphaneleri | [Lenis — MIT](public/assets/licenses/Lenis-MIT.txt) · [GSAP Standard License](https://gsap.com/standard-license); GSAP dosya başlıkları korunur                                 |
 
-Tipografi Barlow Condensed ve Inter'dir. Lisanslı Manuka dosyası dahil değildir.
-Görsel davranış referansı: [Sadu Media](https://www.sadumedia.com/).
+Proje için ayrı bir kök lisans dosyası tanımlanmamıştır. npm bağımlılıklarının lisansları ilgili paketlerde bulunur. Görsel hareket referansı: [Sadu Media](https://www.sadumedia.com/). README ekran görüntüleri bu uygulamanın kendi arayüzünden alınmıştır.
 
-## Depoya hazırlık
+---
 
-Kaynaklar, `public/`, `scripts/`, `docs/`, yapılandırma dosyaları ve
-`package-lock.json` depoya dahil edilir. `.gitignore`, bağımlılıkları, build
-çıktısını, yerel ayarları, logları, gizli ortam dosyalarını ve test kayıtlarını dışarıda tutar.
-Kilit dosyasını koruyun; `dist/` dosyalarını elle değiştirmeyin.
-
-En büyük teslim dosyası 11,62 MB'tır; bu sürüm için Git LFS gerekli değildir.
-[GitHub dosya sınırları](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github)
-değişebileceğinden daha büyük video eklerken yeniden kontrol edin.
-`check:release` 25 MiB üstü dosyaları, eksik kaynakları ve istenmeyen teslim içeriğini denetler.
-
-Kaynak deposu: [furkan-akpinar/snow-medya](https://github.com/furkan-akpinar/snow-medya).
-Yayın adresi veya erişim anahtarı projeye eklenmemiştir.
+<p align="center">
+  <strong>Furkan Akpınar</strong> · <a href="https://github.com/furkan-akpinar">GitHub</a>
+</p>
