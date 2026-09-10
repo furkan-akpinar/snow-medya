@@ -39,7 +39,7 @@ Film seçkisindeki dört çalışma **konsept sunumlarıdır**; tamamlanmış m�
 
 ## Intro önizlemeleri
 
-Çalışan yerel üretim çıktısından alınan yaklaşık sekiz saniyelik ekran kayıtlarının GIF önizlemeleri. Kayıt sırasında masaüstünde **1440×900**, mobilde **390×844** CSS viewport kullanılmıştır. Giriş yazıları, videonun büyümesi ve manifesto başlığının yükselişi otomatik olarak döngüde oynar. Tam çözünürlüklü MP4 kayıtlarına aşağıdaki bağlantılardan ulaşabilirsiniz.
+Çalışan yerel üretim çıktısından alınan yaklaşık sekiz saniyelik ekran kayıtlarının GIF önizlemeleri. Kayıt sırasında masaüstünde **1440×900**, mobilde **390×844** CSS viewport kullanılmıştır. Giriş yazıları, videonun büyümesi ve manifesto başlığının yükselişi otomatik olarak döngüde oynar.
 
 <p align="center">
   <img src="docs/screenshots/intro-desktop.gif" alt="Masaüstü intro: giriş yazıları, küçük videonun büyümesi ve manifesto başlığının yükselişi" width="800" />
@@ -47,27 +47,7 @@ Film seçkisindeki dört çalışma **konsept sunumlarıdır**; tamamlanmış m�
 
 <p align="center">
   <img src="docs/screenshots/intro-mobile.gif" alt="Mobil intro: dikey yerleşimde video büyümesi ve manifesto başlığının girişi" width="280" />
-  &nbsp;
-  <img src="docs/screenshots/menu-mobile.webp" alt="Mobil turkuaz menü: Filmler, Çekimler, Ekibimiz ve İletişim" width="280" />
 </p>
-
-<p align="center"><sub>Mobil intro · Tam ekran menü</sub></p>
-
-<p align="center">
-  <a href="docs/screenshots/intro-desktop.mp4">Masaüstü MP4</a> ·
-  <a href="docs/screenshots/intro-mobile.mp4">Mobil MP4</a>
-</p>
-
-<details>
-  <summary>Intro sonrası sabit ekran görüntüleri</summary>
-  <br />
-
-![Masaüstü ana sayfa: kayak videosu üzerinde Snow Medya logosu ve altında manifesto başlığı](docs/screenshots/desktop.webp)
-
-  <p align="center">
-    <img src="docs/screenshots/mobile.webp" alt="Mobil ana sayfa: video, merkezde logo ve iki satırlı manifesto başlığı" width="280" />
-  </p>
-</details>
 
 <a id="ozellikler"></a>
 
