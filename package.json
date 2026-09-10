@@ -1,0 +1,23 @@
+{
+  "name": "snow-medya",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Snow Medya — dağ sporları için film, fotoğraf ve yaratıcı prodüksiyon",
+  "engines": {
+    "node": "^22.12.0 || >=24.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "check": "node --check src/main.js && node --check src/ambient-video.js && node scripts/check-assets.mjs",
+    "build": "npm run check && vite build",
+    "preview": "vite preview",
+    "format": "prettier --write index.html src scripts vite.config.js package.json README.md docs",
+    "format:check": "prettier --check index.html src scripts vite.config.js package.json README.md docs",
+    "check:release": "node scripts/check-release.mjs"
+  },
+  "devDependencies": {
+    "vite": "8.2.2",
+    "prettier": "3.9.6"
+  }
+}
