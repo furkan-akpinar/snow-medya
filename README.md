@@ -1,6 +1,6 @@
 # Snow Medya
 
-Kayak, snowboard ve dağ sporları için film, fotoğraf ve yaratıcı prodüksiyon sitesi.
+Kişisel kayak deneyimini profesyonel çekim ekibiyle sinematik bir filme dönüştürme hizmetinin sitesi.
 HTML, CSS ve vanilla JavaScript kullanır. Vite geliştirme sunucusu ve üretim derlemesini sağlar.
 
 ## Kurulum
@@ -41,11 +41,17 @@ Son komut `dist/` çıktısını `http://127.0.0.1:4173/` üzerinde sunar.
 - `scripts/`: varlık ve teslim kontrolleri.
 - `docs/QA.md`: tarayıcı testleri ve doğrulama sınırları.
 - `docs/INTRO.md`: video büyümesi ve başlık girişinin güncel doğrulaması.
+- `docs/PERSONAL-SKI.md`: kişisel kayak çekimi metinleri, header ve intro logosu revizesi.
 
 Rotalar: `/#/`, `/#/isler`, `/#/hizmetler`, `/#/hakkimizda`, `/#/iletisim` ve
 `/#/is/{ilk-iz,yercekimine-karsi,zirvede-bir-gun,kis-bitmeden}`.
 Hash rotaları nedeniyle sunucuda ayrı sayfa yönlendirme kuralı gerekmez.
 Vite `base: './'` ayarı alt klasörden sunmayı destekler.
+
+Menü ve footer etiketleri Filmler, Çekimler, Ekibimiz ve İletişim'dir;
+mevcut rota adresleri korunur. Introda header ile aynı Snow Medya logosu
+%75 opaklıkta dekoratif bir katmandır; oynatıcı açmaz. Otomatik video ve
+manifesto geçişinin zamanlaması korunur.
 
 Animasyonlar yerel GSAP/ScrollTrigger ve Lenis ile çalışır. Sayfa değişiminde
 timeline, observer ve sayfa dinleyicileri temizlenir. Açılıştaki perspektifli yazılar,

@@ -1,5 +1,9 @@
 # Otomatik intro — 10 Eylül 2026
 
+Güncel içerik revizesinde intro üzerindeki yazı/oynat düğmesi dekoratif Snow
+Medya logosuyla değiştirildi. Aşağıdaki orta süre ayarı korunur. Bu katman
+değişikliğinin doğrulaması [PERSONAL-SKI.md](PERSONAL-SKI.md) dosyasındadır.
+
 Bu revize, önceki kaydırma/scrub introsunun yerine geçer. Ana görsel referans,
 kullanıcının sağladığı **Kayıt 2026-09-10 101638.mp4** dosyasıdır. Referans
 yalnızca incelendi; siteye veya Git deposuna eklenmedi.
