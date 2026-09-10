@@ -18,7 +18,7 @@
 
 <p align="center">
   <a href="#konsept">Konsept</a> ·
-  <a href="#ekran-goruntuleri">Intro videoları</a> ·
+  <a href="#ekran-goruntuleri">Intro önizlemeleri</a> ·
   <a href="#ozellikler">Öne çıkanlar</a> ·
   <a href="#teknoloji">Teknoloji</a> ·
   <a href="#kurulum">Kurulum</a> ·
@@ -37,16 +37,16 @@ Film seçkisindeki dört çalışma **konsept sunumlarıdır**; tamamlanmış m�
 
 <a id="ekran-goruntuleri"></a>
 
-## Intro videoları
+## Intro önizlemeleri
 
-Çalışan yerel üretim çıktısından alınan yaklaşık sekiz saniyelik gerçek ekran kayıtları. Masaüstünde **1440×900**, mobilde **390×844** CSS viewport kullanılmıştır. Giriş yazılarından videonun büyümesine ve manifesto başlığının yükselişine kadar açılışın tamamını oynatma düğmesiyle izleyebilirsiniz.
+Çalışan yerel üretim çıktısından alınan yaklaşık sekiz saniyelik ekran kayıtlarının GIF önizlemeleri. Kayıt sırasında masaüstünde **1440×900**, mobilde **390×844** CSS viewport kullanılmıştır. Giriş yazıları, videonun büyümesi ve manifesto başlığının yükselişi otomatik olarak döngüde oynar. Tam çözünürlüklü MP4 kayıtlarına aşağıdaki bağlantılardan ulaşabilirsiniz.
 
 <p align="center">
-  <video src="https://github.com/furkan-akpinar/snow-medya/raw/refs/heads/main/docs/screenshots/intro-desktop.mp4" controls muted width="100%" aria-label="Snow Medya masaüstü intro ekran kaydı"></video>
+  <img src="docs/screenshots/intro-desktop.gif" alt="Masaüstü intro: giriş yazıları, küçük videonun büyümesi ve manifesto başlığının yükselişi" width="800" />
 </p>
 
 <p align="center">
-  <video src="https://github.com/furkan-akpinar/snow-medya/raw/refs/heads/main/docs/screenshots/intro-mobile.mp4" controls muted width="280" height="606" aria-label="Snow Medya mobil intro ekran kaydı"></video>
+  <img src="docs/screenshots/intro-mobile.gif" alt="Mobil intro: dikey yerleşimde video büyümesi ve manifesto başlığının girişi" width="280" />
   &nbsp;
   <img src="docs/screenshots/menu-mobile.webp" alt="Mobil turkuaz menü: Filmler, Çekimler, Ekibimiz ve İletişim" width="280" />
 </p>
