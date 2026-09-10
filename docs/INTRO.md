@@ -15,16 +15,31 @@ alt kısmını kısmen kesiyor; görünmeyen alan için birebir eşleşme iddias
 | ---------------------------------------- | ----------------------- | -------------------------- |
 | WE ARE harflerinin perspektifli açılması | yaklaşık 0,7–1,4 sn     | 0,55–1,48 sn               |
 | Marka harflerinin soldan sağa açılması   | yaklaşık 1,2–1,9 sn     | 1,05–2,00 sn               |
-| Küçük medyanın yer açarak görünmesi      | yaklaşık 1,8–2,8 sn     | 1,75–2,20 sn               |
-| Aynı medyanın tam ekrana büyümesi        | yaklaşık 3,9–4,6 sn     | 2,20–2,65 sn               |
-| Açık manifesto yüzeyinin yükselmesi      | yaklaşık 5,2–5,8 sn     | 2,95–3,50 sn               |
-| Manifesto harflerinin sırayla düzleşmesi | yaklaşık 5,5–6,7 sn     | 3,05–4,50 sn               |
+| Küçük medyanın yer açarak görünmesi      | yaklaşık 1,8–2,8 sn     | 1,75–2,43 sn               |
+| Aynı medyanın tam ekrana büyümesi        | yaklaşık 3,9–4,6 sn     | 2,73–3,33 sn               |
+| Açık manifesto yüzeyinin yükselmesi      | yaklaşık 5,2–5,8 sn     | 3,63–4,18 sn               |
+| Manifesto harflerinin sırayla düzleşmesi | yaklaşık 5,5–6,7 sn     | 3,73–5,18 sn               |
 
 *Uygulama süreleri font/poster hazırlığından sonra başlar. Referans zamanları
 kayıttaki karelerden yaklaşık ölçüldü; metinler ve font oranları farklıdır.
 Mevcut Barlow Condensed korunur; Manuka ile birebir font eşleşmesi yoktur.
 
-### Güncel hızlı büyüme ayarı
+### Güncel orta süre ayarı
+
+Son hızlı sürüm kısa bulunduğu için önceki uzun sürüm ile hızlı sürümün
+sürelerinin ortalaması alındı: küçük alan 0,675 saniyede açılır, 0,3 saniye
+bekler ve 0,6 saniyede tam ekrana büyür. Tam ekran anı önceki sürümlerdeki
+4,00 ve 2,65 saniyenin tam ortası olan 3,325 saniyedir. Toplam intro yaklaşık
+5,18 saniye sürer. Yazı hareketleri ve tam ekran sonrası bekleme korunur.
+
+1440×900 ve 390×844 gerçek CSS viewport'larda yeniden kaydedilip doğrulandı.
+Belge hazırlığı dahil tam ekran anı masaüstünde 3,41, mobilde 3,35 saniye
+ölçüldü. Video elemanı değişmedi; tek metadata yüklemesi, sabit font boyutu,
+taşmasız son yerleşim ve kullanılabilir normal kaydırma doğrulandı.
+Check, build ve format:check başarılıdır. Bu sürümün kayıt ve ölçümleri
+Git dışında artifacts/intro-medium/ dizinindedir.
+
+### Önceki hızlı büyüme ayarı
 
 Kullanıcının videonun hâlâ geç büyüdüğünü belirtmesi üzerine küçük alanın
 açılması 0,45 saniyeye indirildi, küçük alandaki bekleme kaldırıldı ve tam
@@ -51,7 +66,7 @@ kullanıcının beklemeyi yarıya indirme isteği uygulandı. Küçük medya aç
 sonraki bekleme 1,2 saniyeden 0,6 saniyeye; video tam ekran olduktan sonraki
 bekleme 0,6 saniyeden 0,3 saniyeye indirildi. Büyümenin, yazı hareketlerinin ve
 harf gecikmelerinin süreleri korundu. Bu önceki revizede toplam sekans
-yaklaşık 6,75 yerine 5,85 saniyeydi; yukarıdaki tablo son hızlı büyüme
+yaklaşık 6,75 yerine 5,85 saniyeydi; yukarıdaki tablo güncel orta süre
 revizesinin zamanlamasını gösterir.
 
 Bu süre revizesi gerçek 1440×900 ve 390×844 CSS viewport'larda tekrar

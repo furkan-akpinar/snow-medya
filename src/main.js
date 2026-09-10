@@ -341,9 +341,9 @@ import { createAmbientVideos } from './ambient-video.js';
       opening.dataset.introPhase = 'letters';
       // Video zamanlaması (saniye). Sonraki aşamalar bu değerlerden hesaplanır.
       const mediaStart = 1.75;
-      const mediaRevealDuration = 0.45;
-      const mediaHoldDuration = 0;
-      const mediaExpandDuration = 0.45;
+      const mediaRevealDuration = 0.675;
+      const mediaHoldDuration = 0.3;
+      const mediaExpandDuration = 0.6;
       const fullVideoHoldDuration = 0.3;
       const expandStart = mediaStart + mediaRevealDuration + mediaHoldDuration;
       const fullVideoStart = expandStart + mediaExpandDuration;

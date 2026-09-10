@@ -50,7 +50,7 @@ Vite `base: './'` ayarı alt klasörden sunmayı destekler.
 Animasyonlar yerel GSAP/ScrollTrigger ve Lenis ile çalışır. Sayfa değişiminde
 timeline, observer ve sayfa dinleyicileri temizlenir. Açılıştaki perspektifli yazılar,
 video büyümesi ve manifesto harfleri masaüstü ve mobilde tek otomatik sekansla
-oynar. Yaklaşık 4,5 saniyelik açılıştan sonra normal kaydırma devam eder;
+oynar. Yaklaşık 5,2 saniyelik açılıştan sonra normal kaydırma devam eder;
 kaydırma introyu yeniden başlatmaz.
 Sonraki tipografi satırları normal akışta kendi alanlarını korur; masaüstünde
 grup olarak sabitlenip yukarı ilerler, mobilde doğal akışta kalır. Ölçümler
