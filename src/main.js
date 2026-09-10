@@ -390,7 +390,7 @@ import { createAmbientVideos } from './ambient-video.js';
           opening.dataset.introPhase = 'expanding';
         },
         [],
-        3.85,
+        3.25,
       );
       openingTimeline.to(
         cover,
@@ -403,25 +403,25 @@ import { createAmbientVideos } from './ambient-video.js';
           duration: 0.75,
           ease: 'power3.inOut',
         },
-        3.85,
+        3.25,
       );
-      openingTimeline.set(hero, { autoAlpha: 0 }, 4.6);
+      openingTimeline.set(hero, { autoAlpha: 0 }, 4);
       openingTimeline.call(
         () => {
           opening.dataset.introPhase = 'full-video';
         },
         [],
-        4.6,
+        4,
       );
-      openingTimeline.to(controls, { autoAlpha: 1, duration: 0.35 }, 4.75);
+      openingTimeline.to(controls, { autoAlpha: 1, duration: 0.35 }, 4.15);
       openingTimeline.call(
         () => {
           opening.dataset.introPhase = 'manifesto';
         },
         [],
-        5.2,
+        4.3,
       );
-      openingTimeline.to(section, { y: 0, duration: 0.55, ease: 'power3.inOut' }, 5.2);
+      openingTimeline.to(section, { y: 0, duration: 0.55, ease: 'power3.inOut' }, 4.3);
       openingTimeline.to(
         titleChars,
         {
@@ -433,7 +433,7 @@ import { createAmbientVideos } from './ambient-video.js';
           stagger: 0.032,
           ease: 'power3.out',
         },
-        5.3,
+        4.4,
       );
     } else finish();
     const resize = () => {

@@ -16,13 +16,30 @@ alt kısmını kısmen kesiyor; görünmeyen alan için birebir eşleşme iddias
 | WE ARE harflerinin perspektifli açılması | yaklaşık 0,7–1,4 sn     | 0,55–1,48 sn               |
 | Marka harflerinin soldan sağa açılması   | yaklaşık 1,2–1,9 sn     | 1,05–2,00 sn               |
 | Küçük medyanın yer açarak görünmesi      | yaklaşık 1,8–2,8 sn     | 1,75–2,65 sn               |
-| Aynı medyanın tam ekrana büyümesi        | yaklaşık 3,9–4,6 sn     | 3,85–4,60 sn               |
-| Açık manifesto yüzeyinin yükselmesi      | yaklaşık 5,2–5,8 sn     | 5,20–5,75 sn               |
-| Manifesto harflerinin sırayla düzleşmesi | yaklaşık 5,5–6,7 sn     | 5,30–6,75 sn               |
+| Aynı medyanın tam ekrana büyümesi        | yaklaşık 3,9–4,6 sn     | 3,25–4,00 sn               |
+| Açık manifesto yüzeyinin yükselmesi      | yaklaşık 5,2–5,8 sn     | 4,30–4,85 sn               |
+| Manifesto harflerinin sırayla düzleşmesi | yaklaşık 5,5–6,7 sn     | 4,40–5,85 sn               |
 
 *Uygulama süreleri font/poster hazırlığından sonra başlar. Referans zamanları
 kayıttaki karelerden yaklaşık ölçüldü; metinler ve font oranları farklıdır.
 Mevcut Barlow Condensed korunur; Manuka ile birebir font eşleşmesi yoktur.
+
+### Video bekleme süresi revizesi
+
+**Kayıt 2026-09-10 210113.mp4** (6,85 sn, 1918×948) incelendikten sonra,
+kullanıcının beklemeyi yarıya indirme isteği uygulandı. Küçük medya açıldıktan
+sonraki bekleme 1,2 saniyeden 0,6 saniyeye; video tam ekran olduktan sonraki
+bekleme 0,6 saniyeden 0,3 saniyeye indirildi. Büyümenin, yazı hareketlerinin ve
+harf gecikmelerinin süreleri korunur. Yukarıdaki uygulama sütunu güncel
+zamanlamayı gösterir; toplam sekans yaklaşık 6,75 yerine 5,85 saniyedir.
+
+Bu süre revizesi gerçek 1440×900 ve 390×844 CSS viewport'larda tekrar
+kaydedilip ölçüldü. Tam ekran ile manifesto başlangıcı arasında her iki
+ölçümde yaklaşık 0,30 saniye var. Video elemanı değişmedi, tek metadata
+yüklemesi görüldü; yatay taşma veya font boyutu değişmesi olmadı. Mobilde
+PageDown/PageUp sonrası intro tamamlanmış durumda kaldı. Yeni kayıtlar ve
+ölçümler Git dışında artifacts/intro-timing/ dizinindedir. Check, build,
+format:check ve check:release başarılıdır.
 
 Masaüstünde WE / medya / ARE aynı satırda, Snow Medya aşağıdadır. Mobilde
 WE ARE, medya ve marka üç kat halinde dizilir. Kaydın mobil medya alanı
