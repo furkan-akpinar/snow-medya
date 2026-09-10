@@ -18,7 +18,7 @@
 
 <p align="center">
   <a href="#konsept">Konsept</a> ·
-  <a href="#ekran-goruntuleri">Ekran görüntüleri</a> ·
+  <a href="#ekran-goruntuleri">Intro videoları</a> ·
   <a href="#ozellikler">Öne çıkanlar</a> ·
   <a href="#teknoloji">Teknoloji</a> ·
   <a href="#kurulum">Kurulum</a> ·
@@ -37,19 +37,37 @@ Film seçkisindeki dört çalışma **konsept sunumlarıdır**; tamamlanmış m�
 
 <a id="ekran-goruntuleri"></a>
 
-## Ekran görüntüleri
+## Intro videoları
 
-Çalışan yerel üretim çıktısından alınmıştır. Masaüstünde **1440×900**, mobilde **390×844** gerçek CSS viewport kullanılmıştır. Ana sayfa görüntülerinde intro tamamlanmış; kayak videosu, logo ve manifesto başlığı görünür durumdadır.
-
-![Masaüstü ana sayfa: kayak videosu üzerinde Snow Medya logosu ve altında manifesto başlığı](docs/screenshots/desktop.webp)
+Çalışan yerel üretim çıktısından alınan yaklaşık sekiz saniyelik gerçek ekran kayıtları. Masaüstünde **1440×900**, mobilde **390×844** CSS viewport kullanılmıştır. Giriş yazılarından videonun büyümesine ve manifesto başlığının yükselişine kadar açılışın tamamını oynatma düğmesiyle izleyebilirsiniz.
 
 <p align="center">
-  <img src="docs/screenshots/mobile.webp" alt="Mobil ana sayfa: video, merkezde logo ve iki satırlı manifesto başlığı" width="280" />
+  <video src="https://github.com/furkan-akpinar/snow-medya/raw/refs/heads/main/docs/screenshots/intro-desktop.mp4" controls muted width="100%" aria-label="Snow Medya masaüstü intro ekran kaydı"></video>
+</p>
+
+<p align="center">
+  <video src="https://github.com/furkan-akpinar/snow-medya/raw/refs/heads/main/docs/screenshots/intro-mobile.mp4" controls muted width="280" height="606" aria-label="Snow Medya mobil intro ekran kaydı"></video>
   &nbsp;
   <img src="docs/screenshots/menu-mobile.webp" alt="Mobil turkuaz menü: Filmler, Çekimler, Ekibimiz ve İletişim" width="280" />
 </p>
 
-<p align="center"><sub>Mobil ana sayfa · Tam ekran menü</sub></p>
+<p align="center"><sub>Mobil intro · Tam ekran menü</sub></p>
+
+<p align="center">
+  <a href="docs/screenshots/intro-desktop.mp4">Masaüstü MP4</a> ·
+  <a href="docs/screenshots/intro-mobile.mp4">Mobil MP4</a>
+</p>
+
+<details>
+  <summary>Intro sonrası sabit ekran görüntüleri</summary>
+  <br />
+
+![Masaüstü ana sayfa: kayak videosu üzerinde Snow Medya logosu ve altında manifesto başlığı](docs/screenshots/desktop.webp)
+
+  <p align="center">
+    <img src="docs/screenshots/mobile.webp" alt="Mobil ana sayfa: video, merkezde logo ve iki satırlı manifesto başlığı" width="280" />
+  </p>
+</details>
 
 <a id="ozellikler"></a>
 
@@ -123,7 +141,7 @@ src/ambient-video.js   Arka plan videolarının yüklenmesi ve oynatılması
 src/styles.css         Yerleşim, tipografi ve responsive kurallar
 public/assets/         Videolar, posterler, görseller, fontlar ve kütüphaneler
 scripts/               Varlık ve teslim kontrol betikleri
-docs/                  Kontrol notları ve README ekran görüntüleri
+docs/                  Kontrol notları, ekran kayıtları ve görüntüleri
 ```
 
 **İçerik düzenleme:** proje adları ve açıklamaları `src/main.js` içindeki `projects` dizisinden; sayfa ve çekim metinleri aynı dosyadaki şablonlardan değiştirilir. Ortak menü, header ve footer metinleri `index.html` içindedir. Medya değişiklikleriyle birlikte `public/assets/provenance.json` kaydı da güncellenmelidir.
@@ -141,7 +159,7 @@ Görüntüler üçüncü taraf stok içeriklerdir; Snow Medya tarafından çekil
 | Fontlar                 | SIL Open Font License 1.1: [Barlow Condensed](public/assets/licenses/Barlow-OFL.txt) · [Inter](public/assets/licenses/Inter-OFL.txt)                                            |
 | Animasyon kütüphaneleri | [Lenis — MIT](public/assets/licenses/Lenis-MIT.txt) · [GSAP Standard License](https://gsap.com/standard-license); GSAP dosya başlıkları korunur                                 |
 
-Proje için ayrı bir kök lisans dosyası tanımlanmamıştır. npm bağımlılıklarının lisansları ilgili paketlerde bulunur. Görsel hareket referansı: [Sadu Media](https://www.sadumedia.com/). README ekran görüntüleri bu uygulamanın kendi arayüzünden alınmıştır.
+Proje için ayrı bir kök lisans dosyası tanımlanmamıştır. npm bağımlılıklarının lisansları ilgili paketlerde bulunur. Görsel hareket referansı: [Sadu Media](https://www.sadumedia.com/). README ekran kayıtları ve görüntüleri bu uygulamanın kendi arayüzünden alınmıştır.
 
 ---
 
