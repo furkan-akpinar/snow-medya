@@ -48,8 +48,10 @@ Hash rotaları nedeniyle sunucuda ayrı sayfa yönlendirme kuralı gerekmez.
 Vite `base: './'` ayarı alt klasörden sunmayı destekler.
 
 Animasyonlar yerel GSAP/ScrollTrigger ve Lenis ile çalışır. Sayfa değişiminde
-timeline, observer ve sayfa dinleyicileri temizlenir. Açılıştaki video büyümesi
-ve ilk başlığın yükselişi masaüstü ve mobilde tek bir kaydırma sahnesine bağlıdır.
+timeline, observer ve sayfa dinleyicileri temizlenir. Açılıştaki perspektifli yazılar,
+video büyümesi ve manifesto harfleri masaüstü ve mobilde tek otomatik sekansla
+oynar. Yaklaşık 6,8 saniyelik açılıştan sonra normal kaydırma devam eder;
+kaydırma introyu yeniden başlatmaz.
 Sonraki tipografi satırları normal akışta kendi alanlarını korur; masaüstünde
 grup olarak sabitlenip yukarı ilerler, mobilde doğal akışta kalır. Ölçümler
 fontlar hazırken yapılır ve ekran değişiminde yenilenir. Hareket azaltma tercihi

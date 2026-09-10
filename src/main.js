@@ -96,14 +96,14 @@ import { createAmbientVideos } from './ambient-video.js';
     const photos = ['hero.jpg', 'snowboard.jpg', 'resort.jpg'];
     const group = (reverse = false) =>
       `<span class="manifesto-images" aria-hidden="true">${(reverse ? [...photos].reverse() : photos).map((photo) => `<span class="manifesto-photo"><img src="assets/${photo}" alt="" loading="lazy" decoding="async"></span>`).join('')}</span>`;
-    return `<section class="manifesto" aria-labelledby="manifesto-title"><div class="manifesto-track"><div class="manifesto-stage"><div class="manifesto-stack">
+    return `<section class="manifesto intro-linked" aria-labelledby="manifesto-title"><div class="manifesto-track"><div class="manifesto-stage"><div class="manifesto-stack">
       <div class="manifesto-line manifesto-intro"><div class="manifesto-mask"><h2 id="manifesto-title" class="manifesto-title">DAĞIN HİKÂYESİNİ ANLATIYORUZ.</h2></div></div>
       ${['PRODÜKSİYON', 'HİKÂYE ANLATIMI', 'VE UYGULAMA'].map((text, i) => `<div class="manifesto-line manifesto-chapter"><div class="manifesto-mask"><div class="manifesto-row">${group(i === 1)}<h3 class="manifesto-text">${text}</h3>${group(i !== 1)}</div></div></div>`).join('')}
       <div class="manifesto-line manifesto-outro"><div class="manifesto-mask"><p class="manifesto-impact">İZ BIRAKMAK İÇİN.</p></div><div class="manifesto-bottom"><p>Kayak, snowboard ve dağ yaşamı.<br>Dağda başlayan hikâyeler, ekranda iz bırakır.</p><a class="pill" href="#/hakkimizda">Snow Medya’yı tanı. <span>↗</span></a></div></div>
     </div></div></div></section>`;
   };
   const home = () =>
-    `<div class="opening"><section class="hero"><div class="hero-heading"><div class="hero-top display"><span class="word">WE</span><div class="hero-inset"><img data-reel-poster src="${reelMedia().poster}" alt="Karla kaplı yamaçta kayakçı" fetchpriority="high"></div><span class="word">ARE</span></div><h1>SNOW MEDYA</h1></div><div class="hero-bottom"><p>Dağın ruhunu,<br>hareketin hikâyesini çekiyoruz.</p><a class="scroll-cue" href="#film-alani">Keşfet <span>↓</span></a><div class="hero-note">Kayak. Snowboard. Dağ yaşamı.<br>Yaratıcı prodüksiyon stüdyosu.</div></div></section><section class="film-cover" id="film-alani"><img data-reel-poster src="${reelMedia().poster}" alt="Karla kaplı yamaçta kayakçı" class="parallax" loading="eager"><button class="reel-button" data-film aria-label="Kayak filmi seçkisini oynat"><span>DAĞIN</span><span class="play-disc" aria-hidden="true">▶</span><span>RİTMİ.</span></button><div class="film-caption"><span>Snow Medya / Görsel seçki</span><span>Soğuğu hisset. Anı yaşa.</span></div></section></div>${manifesto()}<section class="about about-video" data-ambient-surface>${ambient('about-mountains-4161595', 'Karlı dağlar ve teleferikler üzerinde sakin hava çekimi')}<div class="about-content"><span class="eyebrow">Biz Snow Medya.</span><h2>YÜKSEKTE.<br>HAREKETTE.<br>HİKÂYENİN<br>İÇİNDE.</h2><p><strong>Kayak merkezleri, dağ sporları ve açık hava markaları için görsel hikâyeler.</strong><br><br>Bizim için iyi bir görüntü yalnızca ne gördüğünü değil, ne hissettiğini de anlatır. Karın sesini, inişin heyecanını ve zirvenin sessizliğini bir araya getiriyoruz.</p>${pill('Bizi tanı.', '#/hakkimizda')}</div></section><section class="works home-works"><div class="section-head"><h2 class="section-title">İŞİMİZ<br>KONUŞSUN.</h2><p class="eyebrow">Snow Medya<br>Konsept seçkisi / 01—04</p></div><div class="work-grid">${projects.map((p, i) => `<div class="work-stack-item">${card(p, i)}</div>`).join('')}</div><div class="works-more">${pill('Tüm hikâyeler.', '#/isler')}</div></section><section class="disciplines"><p class="eyebrow">Aynı tutkuyu paylaşıyoruz.</p><div class="discipline-list"><span>ALP DİSİPLİNİ</span><span>SNOWBOARD</span><span>FREERIDE</span><span>DAĞ YAŞAMI</span></div></section>${services()}`;
+    `<div class="opening auto-intro"><section class="hero"><div class="hero-heading"><div class="hero-top display"><span class="word">WE</span><div class="hero-inset"><img data-reel-poster src="${reelMedia().poster}" alt="Karla kaplı yamaçta kayakçı" fetchpriority="high"></div><span class="word">ARE</span></div><h1>SNOW MEDYA</h1></div><div class="hero-bottom"><p>Dağın ruhunu,<br>hareketin hikâyesini çekiyoruz.</p><a class="scroll-cue" href="#film-alani">Keşfet <span>↓</span></a><div class="hero-note">Kayak. Snowboard. Dağ yaşamı.<br>Yaratıcı prodüksiyon stüdyosu.</div></div></section><section class="film-cover" id="film-alani"><img data-reel-poster src="${reelMedia().poster}" alt="Karla kaplı yamaçta kayakçı" class="parallax" loading="eager"><button class="reel-button" data-film aria-label="Kayak filmi seçkisini oynat"><span>DAĞIN</span><span class="play-disc" aria-hidden="true">▶</span><span>RİTMİ.</span></button><div class="film-caption"><span>Snow Medya / Görsel seçki</span><span>Soğuğu hisset. Anı yaşa.</span></div></section></div>${manifesto()}<section class="about about-video" data-ambient-surface>${ambient('about-mountains-4161595', 'Karlı dağlar ve teleferikler üzerinde sakin hava çekimi')}<div class="about-content"><span class="eyebrow">Biz Snow Medya.</span><h2>YÜKSEKTE.<br>HAREKETTE.<br>HİKÂYENİN<br>İÇİNDE.</h2><p><strong>Kayak merkezleri, dağ sporları ve açık hava markaları için görsel hikâyeler.</strong><br><br>Bizim için iyi bir görüntü yalnızca ne gördüğünü değil, ne hissettiğini de anlatır. Karın sesini, inişin heyecanını ve zirvenin sessizliğini bir araya getiriyoruz.</p>${pill('Bizi tanı.', '#/hakkimizda')}</div></section><section class="works home-works"><div class="section-head"><h2 class="section-title">İŞİMİZ<br>KONUŞSUN.</h2><p class="eyebrow">Snow Medya<br>Konsept seçkisi / 01—04</p></div><div class="work-grid">${projects.map((p, i) => `<div class="work-stack-item">${card(p, i)}</div>`).join('')}</div><div class="works-more">${pill('Tüm hikâyeler.', '#/isler')}</div></section><section class="disciplines"><p class="eyebrow">Aynı tutkuyu paylaşıyoruz.</p><div class="discipline-list"><span>ALP DİSİPLİNİ</span><span>SNOWBOARD</span><span>FREERIDE</span><span>DAĞ YAŞAMI</span></div></section>${services()}`;
   const archive = () =>
     `<section class="page-top"><p class="eyebrow">Snow Medya / Konsept seçkisi</p><h1 class="page-title">İŞLER.</h1><p class="page-intro">Karın üzerinde başlayan,<br>akılda kalan hikâyeler.</p></section><section class="works archive"><div class="work-grid">${projects.map(card).join('')}</div></section>`;
   const about = () =>
@@ -115,7 +115,11 @@ import { createAmbientVideos } from './ambient-video.js';
       next = projects[(i + 1) % projects.length];
     return `<section class="page-top"><p class="eyebrow">${p.category} / ${p.type}</p><h1 class="page-title">${p.title}</h1><p class="page-intro">${p.subtitle}</p></section><div class="detail-hero" data-ambient-surface>${projectMedia(p)}</div><div class="detail-body"><dl><div><dt>Proje</dt><dd>Snow Medya / Konsept</dd></div><div><dt>Disiplin</dt><dd>${p.category}</dd></div><div><dt>Format</dt><dd>Film & fotoğraf</dd></div></dl><div><p>${p.description}</p><div class="credit-note">Görsel yön çalışmasıdır; tamamlanmış müşteri projesi değildir.</div></div></div><a class="next-project" href="#/is/${next.slug}"><p class="eyebrow">Sıradaki hikâye ↗</p><div class="display">${next.title}</div></a>`;
   };
-  let animationContext, responsiveMotion, openingTimeline, ambientVideos;
+  let animationContext, responsiveMotion, openingTimeline, clearOpening, ambientVideos;
+  let introPlayed = false,
+    introActive = false,
+    introWaitTimer;
+  const titleMeasurements = new WeakMap();
   let backgroundVideo,
     videoObserver,
     videoVisible = false;
@@ -204,6 +208,10 @@ import { createAmbientVideos } from './ambient-video.js';
 
   function disposePage() {
     pageVersion += 1;
+    clearTimeout(introWaitTimer);
+    clearOpening?.();
+    clearOpening = null;
+    lockIntro(false);
     cancelAnimationFrame(pageFrame);
     cancelAnimationFrame(refreshFrame);
     pageEvents?.abort();
@@ -224,103 +232,221 @@ import { createAmbientVideos } from './ambient-video.js';
     animationContext = null;
   }
 
-  function animateOpening(opening, desktop) {
+  function lockIntro(active) {
+    introActive = active;
+    document.documentElement.classList.toggle('intro-lock', active);
+    $('#main').inert = active;
+    $('.footer').inert = active;
+    if (active) {
+      lenis?.stop();
+      window.scrollTo(0, 0);
+      lenis?.scrollTo(0, { immediate: true, force: true });
+    } else if (!film.open && !$('#menu').open) lenis?.start();
+  }
+
+  function fitManifestoTitle(title) {
+    const key = `${innerWidth}/${reelViewport.matches}`;
+    const previous = titleMeasurements.get(title);
+    if (previous?.key === key) {
+      title.style.fontSize = previous.size;
+      return;
+    }
+    title.style.removeProperty('font-size');
+    if (reelViewport.matches) {
+      title.style.fontSize = getComputedStyle(title).fontSize;
+      titleMeasurements.set(title, { key, size: title.style.fontSize });
+      return;
+    }
+    // Rotating letters can inflate scrollWidth; word layout boxes stay stable.
+    const width = [...title.childNodes].reduce((total, node) => {
+      if (node.nodeType === Node.ELEMENT_NODE) return total + node.offsetWidth;
+      const range = document.createRange();
+      range.selectNode(node);
+      return total + range.getBoundingClientRect().width;
+    }, 0);
+    if (width > title.clientWidth)
+      title.style.fontSize = `${(parseFloat(getComputedStyle(title).fontSize) * (title.clientWidth - 2)) / width}px`;
+    else title.style.fontSize = getComputedStyle(title).fontSize;
+    titleMeasurements.set(title, { key, size: title.style.fontSize });
+  }
+
+  function measureOpening(opening) {
+    if (!opening) return;
+    const section = $('.manifesto');
+    fitManifestoTitle($('.manifesto-title', section));
+    const overlap = $('.manifesto-intro', section).offsetHeight;
+    section.style.setProperty('--intro-overlap', overlap + 'px');
+    opening.style.setProperty('--intro-overlap', overlap + 'px');
+    return overlap;
+  }
+
+  function animateOpening(opening) {
+    const section = $('.manifesto');
     const hero = $('.hero', opening);
     const inset = $('.hero-inset', opening);
     const cover = $('.film-cover', opening);
-    const section = $('.manifesto');
     const title = $('.manifesto-title', section);
-    const stack = $('.manifesto-stack', section);
-    const intro = $('.manifesto-intro', section);
-    let bounds;
-    const measure = () => {
-      const anchor = inset.getBoundingClientRect();
-      const parent = opening.getBoundingClientRect();
-      bounds = {
-        left: anchor.left - parent.left,
-        top: anchor.top - parent.top,
-        width: anchor.width,
-        height: anchor.height,
-      };
-      const padding =
-        parseFloat(getComputedStyle(section).paddingTop) +
-        parseFloat(getComputedStyle(stack).paddingTop);
-      section.style.setProperty('--intro-overlap', intro.offsetHeight + padding + 'px');
-      opening.style.setProperty('--intro-overlap', intro.offsetHeight + padding + 'px');
+    const controls = [$('.reel-button', cover), $('.film-caption', cover)];
+    const measure = () => measureOpening(opening);
+    const overlap = measure();
+    const canPlay =
+      opening.classList.contains('intro-pending') && document.fonts.status === 'loaded';
+    introPlayed = true;
+    const originalWidth = opening.clientWidth;
+    const finish = () => {
+      opening.classList.remove('intro-pending');
+      opening.classList.add('intro-complete');
+      opening.dataset.introPhase = 'complete';
+      gsap.set([cover, ...controls], {
+        clearProps: 'left,top,width,height,borderRadius,opacity,visibility',
+      });
+      gsap.set(section, { clearProps: 'transform' });
+      gsap.set(title.querySelectorAll('.motion-char'), {
+        clearProps: 'transform,opacity,visibility',
+      });
+      lockIntro(false);
+      measure();
+      refreshMeasurements();
     };
-    section.classList.add('intro-linked');
-    measure();
     ScrollTrigger.addEventListener('refreshInit', measure);
-    gsap.set($('.hero-heading', hero), { opacity: 1 });
-    gsap.set(cover, {
-      left: bounds.left,
-      top: bounds.top,
-      width: bounds.width,
-      height: bounds.height,
-      borderRadius: 5,
-    });
-    opening.classList.add('intro-ready');
-    // A single scrubbed timeline owns both video growth and the first heading.
-    // No one-shot completion or wheel handler can jump it to its final frame.
-    openingTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: opening,
-        start: 'top top',
-        end: () => '+=' + opening.clientHeight * (desktop ? 0.9 : 0.7),
-        pin: true,
-        pinSpacing: true,
-        scrub: true,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        refreshPriority: 1,
-      },
-    });
-    openingTimeline.fromTo(
-      cover,
-      {
-        left: () => bounds.left,
-        width: () => bounds.width,
-        borderRadius: 5,
-      },
-      {
-        left: 0,
-        width: () => opening.clientWidth,
-        borderRadius: 0,
-        duration: 1,
-        ease: 'none',
-      },
-      0,
-    );
-    openingTimeline.fromTo(
-      cover,
-      { top: () => bounds.top, height: () => bounds.height },
-      { top: 0, height: () => opening.clientHeight, duration: 0.75, ease: 'none' },
-      0,
-    );
-    openingTimeline.fromTo(
-      hero,
-      { autoAlpha: 1 },
-      { autoAlpha: 0, duration: 0.3, ease: 'none' },
-      0.12,
-    );
-    openingTimeline.fromTo(
-      title,
-      { y: 0, yPercent: 115 },
-      { yPercent: 0, duration: 0.4, ease: 'none' },
-      0.5,
-    );
-    openingTimeline.fromTo(
-      [$('.reel-button', cover), $('.film-caption', cover)],
-      { autoAlpha: 0 },
-      { autoAlpha: 1, duration: 0.25, ease: 'none' },
-      0.65,
-    );
+    if (canPlay) {
+      lockIntro(true);
+      const mobile = reelViewport.matches;
+      const slot = inset.getBoundingClientRect();
+      const placeCover = () => {
+        const anchor = inset.getBoundingClientRect();
+        const parent = opening.getBoundingClientRect();
+        gsap.set(cover, {
+          left: anchor.left - parent.left,
+          top: anchor.top - parent.top,
+          width: anchor.width,
+          height: anchor.height,
+        });
+      };
+      const heroChars = hero.querySelectorAll('.motion-char');
+      const titleChars = title.querySelectorAll('.motion-char');
+      gsap.set($('.hero-heading', hero), { autoAlpha: 1 });
+      gsap.set([...heroChars, ...titleChars], {
+        rotationX: -88,
+        rotationZ: -8,
+        yPercent: 105,
+        autoAlpha: 0,
+        transformOrigin: '50% 100%',
+      });
+      gsap.set(inset, { [mobile ? 'height' : 'width']: 0 });
+      gsap.set(cover, { autoAlpha: 0, borderRadius: 10 });
+      gsap.set(controls, { autoAlpha: 0 });
+      gsap.set(section, { y: overlap });
+      placeCover();
+      opening.dataset.introPhase = 'letters';
+      // One automatic sequence owns the media and heading; it has no ScrollTrigger.
+      openingTimeline = gsap.timeline({ onComplete: finish });
+      openingTimeline.to(
+        hero.querySelectorAll('.hero-top .motion-char'),
+        {
+          rotationX: 0,
+          rotationZ: 0,
+          yPercent: 0,
+          autoAlpha: 1,
+          duration: 0.65,
+          stagger: 0.07,
+          ease: 'power3.out',
+        },
+        0.55,
+      );
+      openingTimeline.to(
+        hero.querySelectorAll('h1 .motion-char'),
+        {
+          rotationX: 0,
+          rotationZ: 0,
+          yPercent: 0,
+          autoAlpha: 1,
+          duration: 0.65,
+          stagger: 0.038,
+          ease: 'power3.out',
+        },
+        1.05,
+      );
+      openingTimeline.set(cover, { autoAlpha: 1 }, 1.75);
+      openingTimeline.call(
+        () => {
+          opening.dataset.introPhase = 'small-media';
+        },
+        [],
+        1.75,
+      );
+      openingTimeline.to(
+        inset,
+        {
+          [mobile ? 'height' : 'width']: mobile ? slot.height : slot.width,
+          duration: 0.9,
+          ease: 'power3.inOut',
+          onUpdate: placeCover,
+        },
+        1.75,
+      );
+      openingTimeline.call(
+        () => {
+          opening.dataset.introPhase = 'expanding';
+        },
+        [],
+        3.85,
+      );
+      openingTimeline.to(
+        cover,
+        {
+          left: 0,
+          top: 0,
+          width: () => opening.clientWidth,
+          height: () => opening.clientHeight,
+          borderRadius: 0,
+          duration: 0.75,
+          ease: 'power3.inOut',
+        },
+        3.85,
+      );
+      openingTimeline.set(hero, { autoAlpha: 0 }, 4.6);
+      openingTimeline.call(
+        () => {
+          opening.dataset.introPhase = 'full-video';
+        },
+        [],
+        4.6,
+      );
+      openingTimeline.to(controls, { autoAlpha: 1, duration: 0.35 }, 4.75);
+      openingTimeline.call(
+        () => {
+          opening.dataset.introPhase = 'manifesto';
+        },
+        [],
+        5.2,
+      );
+      openingTimeline.to(section, { y: 0, duration: 0.55, ease: 'power3.inOut' }, 5.2);
+      openingTimeline.to(
+        titleChars,
+        {
+          rotationX: 0,
+          rotationZ: 0,
+          yPercent: 0,
+          autoAlpha: 1,
+          duration: 0.65,
+          stagger: 0.032,
+          ease: 'power3.out',
+        },
+        5.3,
+      );
+    } else finish();
+    const resize = () => {
+      // A breakpoint change settles this one-shot intro, never starts another one.
+      if (introActive && Math.abs(opening.clientWidth - originalWidth) > 1)
+        openingTimeline?.progress(1);
+      measure();
+    };
+    window.addEventListener('resize', resize, { signal: pageEvents.signal });
     return () => {
+      openingTimeline?.kill();
       ScrollTrigger.removeEventListener('refreshInit', measure);
-      section.classList.remove('intro-linked');
-      section.style.removeProperty('--intro-overlap');
-      opening.style.removeProperty('--intro-overlap');
-      opening.classList.remove('intro-ready');
+      lockIntro(false);
     };
   }
 
@@ -387,9 +513,7 @@ import { createAmbientVideos } from './ambient-video.js';
     const chapters = [...section.querySelectorAll('.manifesto-chapter')];
     let travel = 0;
     const measure = () => {
-      title.style.removeProperty('font-size');
-      if (desktop && title.scrollWidth > title.clientWidth)
-        title.style.fontSize = `${(parseFloat(getComputedStyle(title).fontSize) * title.clientWidth) / title.scrollWidth}px`;
+      fitManifestoTitle(title);
       travel = Math.max(0, stack.scrollHeight - innerHeight + 48);
     };
     section.classList.toggle('manifesto-scrolling', desktop);
@@ -484,7 +608,15 @@ import { createAmbientVideos } from './ambient-video.js';
   }
 
   function animatePage() {
-    if (!hasGsap || reduced) return;
+    if (!hasGsap || reduced) {
+      const measure = () => measureOpening($('.opening'));
+      measure();
+      window.addEventListener('resize', measure, { signal: pageEvents.signal });
+      $('.opening')?.classList.add('intro-complete');
+      if ($('.opening')) introPlayed = true;
+      lockIntro(false);
+      return;
+    }
     animationContext = gsap.context(() => {
       const opening = $('.opening');
       document.querySelectorAll('.page-title').forEach((title) => revealLetters(title));
@@ -495,7 +627,6 @@ import { createAmbientVideos } from './ambient-video.js';
         (context) => {
           const desktop = context.conditions.desktop;
           const clearManifesto = animateManifesto(desktop);
-          const clearOpening = opening ? animateOpening(opening, desktop) : null;
           document
             .querySelectorAll(
               '.about-content h2,.services > .section-title,.footer-title,.home-works .section-title',
@@ -590,12 +721,12 @@ import { createAmbientVideos } from './ambient-video.js';
           }
           const clearServices = animateServices(desktop);
           return () => {
-            clearOpening?.();
             clearServices?.();
             clearManifesto?.();
           };
         },
       );
+      if (opening) clearOpening = animateOpening(opening);
     });
     if (typeof ScrollTrigger !== 'undefined') ScrollTrigger.refresh();
     lenis?.resize();
@@ -607,7 +738,7 @@ import { createAmbientVideos } from './ambient-video.js';
       menu.close();
       $('.menu-button').setAttribute('aria-expanded', 'false');
       document.body.classList.remove('locked');
-      lenis?.start();
+      if (!introActive) lenis?.start();
       syncBackgroundVideo();
       if (restoreFocus) $('.menu-button').focus({ preventScroll: true });
     };
@@ -691,10 +822,14 @@ import { createAmbientVideos } from './ambient-video.js';
     if (hasGsap && !reduced) {
       document
         .querySelectorAll(
-          '.hero-top .word,.hero h1,.page-title,.about-content h2,.section-title,.footer-title',
+          '.hero-top .word,.hero h1,.manifesto-title,.page-title,.about-content h2,.section-title,.footer-title',
         )
         .forEach(splitHeading);
-      $('.opening')?.classList.add('motion-intro');
+      const opening = $('.opening');
+      if (opening && !introPlayed) {
+        opening.classList.add('intro-pending');
+        lockIntro(true);
+      }
       $('.manifesto')?.classList.add('manifesto-motion');
     }
     document.title = `Snow Medya — ${title}`;
@@ -710,9 +845,25 @@ import { createAmbientVideos } from './ambient-video.js';
       signal: pageEvents.signal,
     });
     const version = pageVersion;
-    document.fonts.ready.then(() => {
+    const poster = $('[data-reel-poster]');
+    const ready = Promise.all([document.fonts.ready, poster?.decode().catch(() => {})]);
+    // A failed/slow resource must never trap the page in its opening state.
+    Promise.race([
+      ready,
+      new Promise((resolve) => {
+        introWaitTimer = setTimeout(resolve, 1800);
+      }),
+    ]).then(() => {
+      clearTimeout(introWaitTimer);
       if (version !== pageVersion) return;
       pageFrame = requestAnimationFrame(animatePage);
+    });
+    document.fonts.ready.then(() => {
+      if (version === pageVersion) {
+        if (!openingTimeline) titleMeasurements.delete($('.manifesto-title'));
+        measureOpening($('.opening'));
+        refreshMeasurements();
+      }
     });
   }
   async function navigate() {
@@ -789,9 +940,8 @@ import { createAmbientVideos } from './ambient-video.js';
     if (a) {
       e.preventDefault();
       const target = $('#film-alani');
-      const introEnd = openingTimeline?.scrollTrigger?.end;
-      if (lenis) lenis.scrollTo(introEnd ?? target);
-      else if (introEnd != null) window.scrollTo({ top: introEnd, behavior: 'smooth' });
+      if (introActive) return;
+      if (lenis) lenis.scrollTo(target);
       else target?.scrollIntoView({ behavior: reduced ? 'instant' : 'smooth' });
     }
   });
@@ -812,7 +962,7 @@ import { createAmbientVideos } from './ambient-video.js';
     const finish = () => {
       film.close();
       document.body.classList.remove('locked');
-      lenis?.start();
+      if (!introActive) lenis?.start();
       syncBackgroundVideo();
       fullscreenExit.then(() =>
         requestAnimationFrame(() => {
@@ -939,6 +1089,29 @@ import { createAmbientVideos } from './ambient-video.js';
   $('#year').textContent = new Date().getFullYear();
   window.addEventListener('hashchange', navigate);
   document.addEventListener('visibilitychange', syncBackgroundVideo);
+  const introOwnsScroll = () => introActive && !film.open && !$('#menu').open;
+  const preventIntroScroll = (event) => {
+    if (introOwnsScroll()) event.preventDefault();
+  };
+  window.addEventListener('wheel', preventIntroScroll, { passive: false });
+  window.addEventListener('touchmove', preventIntroScroll, { passive: false });
+  window.addEventListener('keydown', (event) => {
+    if (
+      introOwnsScroll() &&
+      ['ArrowDown', 'ArrowUp', 'PageDown', 'PageUp', 'Home', 'End', ' '].includes(event.key)
+    )
+      event.preventDefault();
+  });
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (introOwnsScroll() && scrollY !== 0) {
+        window.scrollTo(0, 0);
+        lenis?.scrollTo(0, { immediate: true, force: true });
+      }
+    },
+    { passive: true },
+  );
   let headerFrame;
   window.addEventListener(
     'scroll',

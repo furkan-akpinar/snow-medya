@@ -1168,53 +1168,78 @@ button[disabled] {
   transform-origin: 50% 100%;
   backface-visibility: hidden;
 }
-.opening {
+.opening.auto-intro {
   position: relative;
-}
-.opening.motion-intro {
   height: 100svh;
   isolation: isolate;
 }
-.opening.motion-intro .hero {
+.opening.auto-intro .hero {
   position: absolute;
   inset: 0;
   height: 100%;
   min-height: 0;
+  padding: 0;
   z-index: 3;
+  visibility: hidden;
   background: #151918;
 }
-.opening.motion-intro .hero-heading {
-  width: min(80vw, 1500px);
-  align-self: center;
-  opacity: 0;
+.opening.intro-pending .hero {
+  visibility: visible;
 }
-.opening.motion-intro .hero h1 {
-  font-size: min(17.5vw, 330px);
-  letter-spacing: -0.035em;
-}
-.opening.motion-intro .hero-top {
-  gap: 2vw;
-}
-.opening.motion-intro .hero-top .word {
-  font-size: min(15vw, 280px);
-}
-.opening.motion-intro .hero-inset {
-  flex-shrink: 0;
-  transform: none;
-  height: 14vw;
-}
-.opening.motion-intro .film-cover {
+.opening.auto-intro .hero-heading {
   position: absolute;
-  z-index: 4;
-  min-height: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(68vw, 1350px);
   margin: 0;
   visibility: hidden;
 }
-.opening.motion-intro.intro-ready .film-cover {
-  visibility: visible;
+.opening.auto-intro .hero h1 {
+  font-size: min(13.5vw, 280px);
+  letter-spacing: -0.035em;
+  padding-block: 0.12em;
+  margin-block: -0.08em;
+  overflow: clip;
 }
-.opening.motion-intro .film-cover > img,
-.opening.motion-intro .film-cover > video {
+.opening.auto-intro .hero-top {
+  gap: 1.3vw;
+}
+.opening.auto-intro .hero-top .word {
+  font-size: min(14vw, 290px);
+  padding-block: 0.12em;
+  overflow: clip;
+}
+.opening.auto-intro .hero-inset {
+  flex-shrink: 0;
+  transform: none;
+  width: min(24vw, 470px);
+  height: min(15vw, 294px);
+  max-height: none;
+}
+.opening.auto-intro .hero-inset img {
+  visibility: hidden;
+}
+.opening.auto-intro .hero-bottom {
+  position: absolute;
+  bottom: 35px;
+  left: 3.3vw;
+  right: 3.3vw;
+}
+.opening.auto-intro .film-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+}
+.opening.intro-pending .film-cover {
+  visibility: hidden;
+}
+.opening.auto-intro .film-cover > img,
+.opening.auto-intro .film-cover > video {
   height: 100%;
   top: 0;
 }
@@ -1228,8 +1253,12 @@ button[disabled] {
 .manifesto.intro-linked .manifesto-intro > .manifesto-mask {
   padding-top: 20px;
 }
-.opening.motion-intro .film-caption {
+.opening.auto-intro .film-caption {
   bottom: calc(var(--intro-overlap, 0px) + 35px);
+}
+.intro-pending .film-cover,
+.intro-lock .manifesto-intro .motion-char {
+  will-change: transform;
 }
 .opening .reel-button {
   font-size: clamp(32px, 4.5vw, 72px);
@@ -1365,18 +1394,34 @@ button[disabled] {
   }
 }
 @media (max-width: 850px) {
-  .opening.motion-intro .hero-heading {
-    width: 100%;
+  .opening.auto-intro .hero-heading {
+    width: calc(100% - 32px);
   }
-  .opening.motion-intro .hero h1 {
-    font-size: 18.7vw;
-    letter-spacing: -0.03em;
+  .opening.auto-intro .hero h1 {
+    font-size: 21vw;
+    letter-spacing: -0.035em;
   }
-  .opening.motion-intro .hero-top .word {
-    font-size: 20vw;
+  .opening.auto-intro .hero-top {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
+    gap: 0 2vw;
   }
-  .opening.motion-intro .hero-inset {
-    height: 20vw;
+  .opening.auto-intro .hero-top .word {
+    font-size: min(28vw, 19svh);
+  }
+  .opening.auto-intro .hero-top .word:first-child {
+    grid-area: 1 / 1;
+    justify-self: end;
+  }
+  .opening.auto-intro .hero-top .word:last-child {
+    grid-area: 1 / 2;
+    justify-self: start;
+  }
+  .opening.auto-intro .hero-inset {
+    grid-area: 2 / 1 / 3 / 3;
+    width: calc(100vw - 32px);
+    height: min(calc((100vw - 32px) * 0.75), 34svh);
   }
   .opening .play-disc {
     width: 60px;
@@ -1557,7 +1602,6 @@ button[disabled] {
   padding-block: 0.15em;
   font-size: clamp(44px, 8.8vw, 155px);
 }
-.manifesto-motion .manifesto-title,
 .manifesto-motion .manifesto-row,
 .manifesto-motion .manifesto-impact {
   transform: translateY(115%);

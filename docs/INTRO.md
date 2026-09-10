@@ -1,95 +1,101 @@
-# Intro revizesi — 10 Eylül 2026
+# Otomatik intro — 10 Eylül 2026
 
-Kapsam yalnızca açılıştaki video büyümesi ve ilk büyük başlığın girişidir.
-Önceki altı revize yeniden ele alınmadı. Uygulama değişiklikleri
-`src/main.js` ve `src/styles.css` ile sınırlı; medya dosyaları, metinler,
-marka, renkler, oynatıcı ve sonraki bölümler korunuyor.
+Bu revize, önceki kaydırma/scrub introsunun yerine geçer. Ana görsel referans,
+kullanıcının sağladığı **Kayıt 2026-09-10 101638.mp4** dosyasıdır. Referans
+yalnızca incelendi; siteye veya Git deposuna eklenmedi.
 
-## Referans gözlemi
+## Kayıtta gözlenen sıra
 
-[Sadu Media](https://www.sadumedia.com/) canlı tarayıcıda masaüstü ve mobilde
-incelendi. Sayfa başına dönülerek küçük aşağı/yukarı kaydırmalar yapıldı.
-1440×900 CSS viewport'ta video alanı 1435×900 px; ilk başlık 146 px yüksek.
-135, 280, 153 ve 12 px kaydırma örneklerinde başlığın üst konumu sırasıyla
-599, 454, 581 ve 722 px oldu. Video ve başlık sınırı birlikte ilerledi.
-Başlangıçta başlık üstü yaklaşık 734 px idi; açık alan videonun alt kısmını
-örtüyordu. 390×844 mobilde video 386×844 px, başlık yaklaşık 126 px yüksek
-ve üst konumu 718 px olarak ölçüldü.
+23,45 saniyelik 1918×952 kayıttan zaman damgalı kareler çıkarıldı. Masaüstü
+açılışı ilk bölümde; mobil tekrar yaklaşık 15,5 saniyede başlıyor. Mobil
+geliştirici araçlarında 440×956 CSS viewport yazıyor. Kayıt bu mobil ekranın
+alt kısmını kısmen kesiyor; görünmeyen alan için birebir eşleşme iddiası yok.
 
-Referansın ilk yükleme sırasında küçük videodan büyümeye geçtiği en erken
-kareyi güvenilir biçimde yakalayamadım. Bu fazın kesin başlangıç boyutu ve
-zamanlaması doğrulanmış sayılmıyor. Mevcut küçük video alanının geometrisi
-korunarak kullanıcının istediği kaydırmaya bağlı büyüme uygulandı. Manuka
-yerine mevcut Barlow Condensed kullanılıyor; birebir font eşleşmesi yok.
+| Aşama                                    | Referans masaüstü kaydı | Uygulanan zaman çizelgesi* |
+| ---------------------------------------- | ----------------------- | -------------------------- |
+| WE ARE harflerinin perspektifli açılması | yaklaşık 0,7–1,4 sn     | 0,55–1,48 sn               |
+| Marka harflerinin soldan sağa açılması   | yaklaşık 1,2–1,9 sn     | 1,05–2,00 sn               |
+| Küçük medyanın yer açarak görünmesi      | yaklaşık 1,8–2,8 sn     | 1,75–2,65 sn               |
+| Aynı medyanın tam ekrana büyümesi        | yaklaşık 3,9–4,6 sn     | 3,85–4,60 sn               |
+| Açık manifesto yüzeyinin yükselmesi      | yaklaşık 5,2–5,8 sn     | 5,20–5,75 sn               |
+| Manifesto harflerinin sırayla düzleşmesi | yaklaşık 5,5–6,7 sn     | 5,30–6,75 sn               |
 
-## Değişiklik
+*Uygulama süreleri font/poster hazırlığından sonra başlar. Referans zamanları
+kayıttaki karelerden yaklaşık ölçüldü; metinler ve font oranları farklıdır.
+Mevcut Barlow Condensed korunur; Manuka ile birebir font eşleşmesi yoktur.
 
-Önceki zaman tabanlı giriş, ilk wheel/touch/klavye girdisinde videoyu son
-kareye taşıyordu. Ardından başlığı başka bir ScrollTrigger hareket ettiriyordu.
-Bu iki ayrı akış kaldırıldı. Tek scrub zaman çizelgesi video boyutunu ve
-ilk başlığın yükselişini yönetiyor; geri kaydırma aynı ilerlemeyi geri alıyor.
-Videoyu başka kapsayıcıya taşıyan geçici DOM/spacer işlemi de kaldırıldı.
+Masaüstünde WE / medya / ARE aynı satırda, Snow Medya aşağıdadır. Mobilde
+WE ARE, medya ve marka üç kat halinde dizilir. Kaydın mobil medya alanı
+yaklaşık 4:3 oranındadır; mevcut dikey kayak videosu bu alanda cover ile
+gösterilir, ardından aynı eleman dikey ekranı doldurur.
 
-Masaüstü büyümesi ekran yüksekliğinin %90'ı, mobil büyümesi %70'i kadar
-kaydırma mesafesi kullanır. Video önce dikey alanı doldurur; son yatay
-büyüme sırasında açık başlık alanı ekrana girer. Başlık translateY ile
-yükselir, opacity ile açılmaz. Başlığın maskesi ve 20 px üst payı Türkçe
-işaretleri korur. Açık alanın video üzerindeki payı, fontlar hazır olduğunda
-gerçek ilk satır yüksekliğinden hesaplanır; resize sırasında yenilenir.
+## Uygulama
 
-Başlangıç video alanı masaüstünde yaklaşık 418×202 px, mobilde 144×78 px.
-Masaüstünde video yaklaşık 1403 px genişlikteyken başlık üstü 762 px;
-mobilde video 360 px genişlikteyken başlık üstü 775 px idi. Bu karelerde
-başlık görünürken video henüz tam genişliğe ulaşmamıştı.
+- Tek otomatik GSAP timeline kullanılır. Introya bağlı pin/scrub kaldırıldı.
+  İlk büyük manifesto başlığını yöneten başka bir animasyon yoktur.
+- Giriş ve manifesto yazıları kelime/harf span'leriyle bölünür. Harfler
+  aşağıdan rotateX ve hafif rotateZ ile açılır. Manifesto harfleri arasında
+  32 ms gecikme vardır; tüm satıra opacity animasyonu uygulanmaz.
+- Arka plan video elemanı yeniden oluşturulmaz veya başka kapsayıcıya
+  taşınmaz. Küçük alanın koordinatları aynı film alanına uygulanır; büyüme
+  src, currentTime veya load durumunu sıfırlamaz.
+- Video tam ekran olduktan sonra manifesto kendi son yerleşimine yükselir.
+  Sonunda geçici transform'lar temizlenir; başlık normal sayfa akışındadır.
+- Font ve poster hazırlığı en fazla 1,8 saniye beklenir. Font hâlâ hazır
+  değilse animasyon atlanır. Video beklenmez; mevcut poster kullanılabilir.
+- Başlık ölçümü dönüşmemiş kelime kutularından yapılır ve piksel cinsinden
+  sabitlenir. Ölçü değiştiğinde yeniden hesaplanır. Türkçe işaretler için
+  maskenin üst payı korunur.
+- Intro sırasında wheel/touchmove ve kaydırma tuşları ilerlemeyi değiştirmez.
+  Yenilemeden taşınabilecek eski scroll konumu sıfırda tutulur. Sekans
+  bitince normal kaydırma açılır; aşağı/yukarı gitmek veya rota dönüşü onu
+  yeniden başlatmaz. Menü/oynatıcı kilitleriyle birlikte çalışır.
+- Hareket azaltmada doğrudan poster ve düz başlık gösterilir; intro kilidi,
+  otomatik video ve pin kurulmaz.
 
-Keşfet bağlantısı büyümenin son kaydırma konumuna gider. Menü ve oynatıcı
-artık intro ilerlemesini sona atlatmaz. Hareket azaltmada sabitleme ve
-animasyon kurulmaz; poster, başlıklar ve bağlantılar doğal akışta kalır.
+## Tarayıcı doğrulaması
 
-## Kontroller
+Gerçek CSS viewport'lar her karede ölçüldü: **1440×900** ve **390×844**.
+Tarayıcının mevcut 1,4 ölçeği için araca 2016×1260 ve 546×1182 verildi.
 
-- Gerçek CSS viewport değerleri DOM üzerinden doğrulandı: 1440×900 ve
-  390×844. Yerel tarayıcının 1,4 ölçeğini telafi etmek için araca sırasıyla
-  2016×1260 ve 546×1182 verildi.
-- Masaüstünde küçük tekerlek adımlarıyla ileri/geri, mobilde küçük klavye
-  adımlarıyla ileri/geri ve PageDown/PageUp ile hızlı kaydırma denendi.
-  Video boyutu ve başlık konumu iki yönde aynı ilerlemeyi takip etti.
-- Yerel test sayfasında görünür maske sınırları ölçüldü; başlıkla sonraki
-  satırın görünür alanında çakışma ve yatay taşma bulunmadı. Başlığı yöneten
-  tween sayısı 1 olarak doğrulandı. Test araçları `artifacts/` altında
-  commit dışında tutuluyor.
-- Geçişin masaüstü/mobil kareleri görsel olarak incelendi. İlave karartma
-  veya video–açık alan arasında boş şerit kalmadı. Videonun mevcut sabit
-  okunabilirlik katmanı değişmedi.
-- Mobil üretim sürümünde Keşfet bağlantısı intro sonuna (yaklaşık 591 px)
-  ulaştı. Film aynı 4274798 mobil kaynağıyla açıldı; arka plan durdu.
-  Esc kapattıktan sonra odak oynat düğmesine döndü, arka plan devam etti
-  ve kaydırma konumu değişmedi. Yerel oynatıcının kontrolleri korundu.
-- Mobilde sayfa başında yenilemeden sonra video genişliği 144 px ve
-  başlık üstü 1444 px olarak sabit kaldı; ilk küçük kaydırmada tam boyuta
-  atlamadı. Masaüstünde yenileme öncesi ve sonrası 0 px kaydırmada video
-  genişliği 418 px, başlık üstü 1712 px idi. Üretim sürümünün tarayıcı
-  konsolunda hata bulunmadı.
-- Hareket azaltma tercihi yerel test sayfasında `matchMedia` üzerinden
-  benzetildi: 390×844 ölçüsünde pin ve başlık tween sayısı 0, başlığın
-  transform değeri `none`, poster mevcut ve otomatik video kaynakları
-  yüklenmemiş durumdaydı. Bu kontrol işletim sistemi ayarını değiştirmedi.
-- `npm.cmd run check` ve `npm.cmd run build` başarılı. 35 gerekli varlık
-  bulundu. `format:check` ve `check:release` de başarılı; 57 teslim dosyası
-  toplam 48,04 MB. Bağımlılık eklenmedi veya yükseltilmedi.
-- `public/assets/` kökündeki 36 dosyanın SHA-256 değerleri revize öncesiyle
-  karşılaştırıldı; değişen dosya yok. Mevcut videolar yeniden indirilmedi.
+- İlk belge yükleme ve yenileme, intro sırasında PageDown, intro sonrası
+  ileri/geri kaydırma kontrol edildi. Intro sırasında scrollY 0 kaldı;
+  sonrasında normal kaydırma çalıştı ve intro yeniden başlamadı.
+- Masaüstünde başlık 129,6 px, mobilde 50,7 px olarak sekans boyunca sabit.
+  Yatay taşma yok. Son harf transform'ları none; harfler düz ve okunabilir.
+- Her iki ölçümde arka plan video kimliği değişmedi; bir metadata yüklemesi
+  görüldü. Aynı 4274798 kaynağı kullanıldı. Ek intro pin'i bulunmadı.
+- Hareket azaltma yerel test sayfasında matchMedia ile benzetildi.
+  Masaüstü/mobilde pin yok, başlık düz, poster mevcut, otomatik video src'leri
+  boş ve sayfa kullanılabilir.
+- Font ready durumunun tamamlanmaması benzetildi: bekleme sınırından sonra
+  intro tamamlandı, kilit ve transform kalmadı, yatay taşma oluşmadı.
+- Video src ataması 4,5 saniye geciktirilerek test edildi: küçük medya
+  aşamasında poster görünür kaldı; video yaklaşık 4,60 saniyede hazır oldu.
+  Aynı video elemanı devam etti, ikinci metadata yüklemesi olmadı.
+- Üretim derlemesinde masaüstü tekerlek kaydırması 336 px ilerledi ve
+  ters yönde 0'a döndü; intro complete durumunda kaldı. Mobilde PageDown
+  739 px ilerledi ve geri dönüş introyu yeniden başlatmadı.
+- Üretim oynatıcısı aynı 4274798 masaüstü/mobil dosyasını açtı, arka plan durdu.
+  Yerel kontroller korundu; Esc kapattıktan sonra sayfa kullanılabildi.
+- Üretim tarayıcısının hata/uyarı kaydı boştu. Teslim kayıtları masaüstünde
+  1440×900 / 145 kare / yaklaşık 9 sn, mobilde 390×844 / 389 kare / yaklaşık
+  9 sn. MP4 boyutları sırasıyla 3,77 MB ve 1,78 MB; bunlar site medyası değildir.
 
-Fiziksel telefon, dokunma donanımı ve farklı tarayıcı motorları test edilmedi.
-Referansın yakalanamayan ilk yükleme karesinin zamanlaması birebir eşleşme
-olarak sunulmuyor.
+Kayıtlar ve ölçüm JSON'ları yalnızca Git dışında kalan
+artifacts/auto-intro/ dizinindedir. Masaüstü ve mobil MP4 kayıtları,
+gerçek tarayıcı ekran görüntülerinden gerçek zaman damgalarıyla oluşturuldu;
+animasyon sonradan taklit edilmedi. Yakalama hızı tarayıcı aracının hızına
+bağlıdır; bu kayıtlar performans/FPS benchmark'ı değildir. Fiziksel telefon
+ve farklı tarayıcı motorları test edilmedi.
 
-## Git teslimi
+## Kaynak ve teslim
 
-Başlangıçta yerel Git deposu yoktu. Kullanıcının belirttiği uzak depo Git
-üzerinden okundu; dal veya commit içermediği doğrulandı. Yerel `main` ve
-`origin` oluşturuldu. Kaynaklar ve gerekli medya birlikte teslim edilir;
-`node_modules`, `dist`, `artifacts`, yerel ayarlar ve `.env` dosyaları hariçtir.
+Uygulama değişiklikleri src/main.js ve src/styles.css ile sınırlıdır.
+Mevcut medya, kaynak kayıtları, paket kilidi, oynatıcı ve diğer bölümler
+korundu. Yeni bağımlılık eklenmedi. README ve bu rapor güncellendi.
 
-En büyük dosya 11.623.800 byte. [GitHub'ın dosya sınırları](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github)
-kontrol edildi; bu boyutlar için Git LFS gerekmedi. Force push kullanılmaz.
+npm.cmd run check ve npm.cmd run build başarılı; 35 gerekli varlık bulundu.
+Git geçmişi korunur; geçici kayıtlar, dist, node_modules ve ortam dosyaları
+commit dışında kalır. Gönderim hedefi
+[furkan-akpinar/snow-medya](https://github.com/furkan-akpinar/snow-medya), dal main.
