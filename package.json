@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "vite",
-    "check": "node --check src/main.js && node --check src/ambient-video.js && node scripts/check-assets.mjs",
+    "check": "node --check src/main.js && node --check src/ambient-video.js && node --check src/media-catalog.js && node scripts/check-assets.mjs",
     "build": "npm run check && vite build",
     "preview": "vite preview",
     "format": "prettier --write index.html src scripts vite.config.js package.json README.md docs",

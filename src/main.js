@@ -1,4 +1,5 @@
 import { createAmbientVideos } from './ambient-video.js';
+import { mediaSlots } from './media-catalog.js';
 
 (() => {
   'use strict';
@@ -12,9 +13,10 @@ import { createAmbientVideos } from './ambient-video.js';
   const reelViewport = matchMedia('(max-width: 850px)');
   const reelMedia = () => {
     const variant = reelViewport.matches ? 'mobile' : 'desktop';
+    const base = mediaSlots['home.intro'].video;
     return {
-      src: `assets/reel-4274798-${variant}.mp4`,
-      poster: `assets/reel-4274798-${variant}.jpg`,
+      src: `assets/${base}-${variant}.mp4`,
+      poster: `assets/${base}-${variant}.jpg`,
     };
   };
   const hasGsap = typeof gsap !== 'undefined';
@@ -41,8 +43,6 @@ import { createAmbientVideos } from './ambient-video.js';
       title: 'İlk İz.',
       category: 'Kayak',
       type: 'Konsept film',
-      image: 'hero.jpg',
-      video: 'project-ski-11246371',
       subtitle: 'Herkesten önce. Her şeyden uzakta.',
       description:
         'İlk inişin heyecanı, karın sesi ve sana ait bir çizgi. Bu konsept film, kişisel kayak çekiminin nasıl sinematik bir hikâyeye dönüşebileceğini gösteren bir görsel örnek.',
@@ -52,8 +52,6 @@ import { createAmbientVideos } from './ambient-video.js';
       title: 'Yerçekimine Karşı.',
       category: 'Snowboard',
       type: 'Sporcu hikâyesi · Konsept',
-      image: 'snowboard.jpg',
-      video: 'project-snowboard-6947516',
       subtitle: 'Kendi çizgini bul.',
       description:
         'Her inişte kendi çizgin, her karede senin ritmin. Snowboard deneyimini yakın plan detaylar, dağ manzaraları ve hareketin içinden çekimlerle anlatan kişisel bir film için konsept çalışma.',
@@ -63,8 +61,6 @@ import { createAmbientVideos } from './ambient-video.js';
       title: 'Zirvede Bir Gün.',
       category: 'Dağ Yaşamı',
       type: 'Dağ günü · Konsept',
-      image: 'resort.jpg',
-      video: 'project-resort-4185345',
       subtitle: 'Bir pistten çok daha fazlası.',
       description:
         'İlk teleferikten son inişe, sana ait bir kayak günü. Pistteki anlarını, manzarayı ve dağda olmanın hissini aynı filmde buluşturan bir kişisel çekim fikri.',
@@ -74,80 +70,74 @@ import { createAmbientVideos } from './ambient-video.js';
       title: 'Kış Bitmeden.',
       category: 'Freeride',
       type: 'Kayak anısı · Konsept',
-      image: 'hero.jpg',
       subtitle: 'Bir iniş daha.',
       description:
         'Kısa günler. Uzun hatıralar. En sevdiğin inişi, karın üzerinde bıraktığın izi ve günün heyecanını yeniden izlemek için bir film fikri. Kişisel kayak çekimine dair bir konsept çalışma.',
     },
   ];
   const pill = (text, href) => `<a class="pill light" href="${href}">${text}<span>↗</span></a>`;
-  const ambient = (name, alt, wideMobile = false) => {
-    const variant = reelViewport.matches ? (wideMobile ? 'mobile-wide' : 'mobile') : 'desktop';
-    const poster = `assets/${name}-${variant}.jpg`;
-    return `<div class="ambient-media" data-ambient="${name}" ${wideMobile ? 'data-mobile-wide' : ''}><img src="${poster}" alt="${alt}" loading="lazy" decoding="async"><video autoplay muted loop playsinline preload="none" aria-hidden="true"></video></div>`;
+  const renderMedia = (slot, decorative = false) => {
+    const item = mediaSlots[slot];
+    if (!item) throw new Error(`Unknown media slot: ${slot}`);
+    if (item.video) {
+      const variant = reelViewport.matches
+        ? item.wideMobile
+          ? 'mobile-wide'
+          : 'mobile'
+        : 'desktop';
+      const poster = `assets/${item.video}-${variant}.jpg`;
+      return `<div class="ambient-media" data-media-slot="${slot}" data-ambient="${item.video}" ${item.wideMobile ? 'data-mobile-wide' : ''}><img src="${poster}" alt="${item.alt}" loading="lazy" decoding="async"><video autoplay muted loop playsinline preload="none" aria-hidden="true"></video></div>`;
+    }
+    return `<img data-media-slot="${slot}" src="assets/${item.image}" alt="${decorative ? '' : item.alt}" loading="lazy" decoding="async" ${item.position ? `style="object-position:${item.position}"` : ''}>`;
   };
-  const projectMedia = (p, i = -1) =>
-    p.video
-      ? ambient(p.video, `${p.category} ve karlı dağ manzarası`, i === 1)
-      : `<img src="assets/${p.image}" alt="${p.category} ve karlı dağ manzarası" loading="lazy" ${i === 3 ? 'style="object-position:75% center"' : ''}>`;
-  const card = (p, i) =>
-    `<a class="work-card" data-ambient-surface href="#/is/${p.slug}" aria-label="${p.title} filmini incele"><div class="work-media">${projectMedia(p, i)}<span class="work-number">0${i + 1} / SNOW MEDYA</span><span class="work-arrow" aria-hidden="true">↗</span></div><div class="work-info"><div><h3>${p.title}</h3><p>${p.type}</p></div><span class="tag">${p.category}.</span></div></a>`;
+  const projectMedia = (p, location = 'home') => renderMedia(`${location}.project.${p.slug}`);
+  const card = (p, i, location = 'home') =>
+    `<a class="work-card" data-ambient-surface href="#/is/${p.slug}" aria-label="${p.title} filmini incele"><div class="work-media">${projectMedia(p, location)}<span class="work-number">0${i + 1} / SNOW MEDYA</span><span class="work-arrow" aria-hidden="true">↗</span></div><div class="work-info"><div><h3>${p.title}</h3><p>${p.type}</p></div><span class="tag">${p.category}.</span></div></a>`;
   const shootingSteps = [
     {
       title: 'Tanışalım.',
       description: 'Kayak deneyimini ve nasıl bir film istediğini konuşalım.',
-      video: 'reel-4274798',
-      alt: 'Karlı pistte kayak deneyimini yaşayan sporcu',
     },
     {
       title: 'Planlayalım.',
       description: 'Çekimin yerini, zamanını ve akışını birlikte belirleyelim.',
-      video: 'about-mountains-4161595',
-      alt: 'Çekim rotasına ilham veren dağlar ve teleferikler',
     },
     {
       title: 'Pistte Buluşalım.',
       description: 'Kayak anlarını profesyonel çekimlerle kaydedelim.',
-      video: 'project-ski-11246371',
-      alt: 'Pistte kayarken görüntülenen kırmızı ceketli kayakçı',
     },
     {
       title: 'Filmini Hazırlayalım.',
       description: 'Görüntüleri seçip sinematik bir kurguya dönüştürelim.',
-      video: 'service-editing-7699548',
-      alt: 'Bilgisayar ekranında video kurgu zaman çizelgesi',
     },
     {
       title: 'Hikâyeni Paylaş.',
       description: 'Filminle pistteki anlarını yeniden yaşa ve paylaş.',
-      video: 'project-snowboard-6947516',
-      alt: 'Karlı yamaçta yeniden izlenecek bir snowboard anı',
     },
   ];
-  const services = () =>
-    `<section class="services"><p class="eyebrow">Kayak çekimin, adım adım.</p><h2 class="section-title">HER AŞAMADA.<br>AYNI TUTKU.</h2><div class="service-layout"><div class="service-image"><div class="service-media">${shootingSteps.map((step, i) => `<div class="service-shot" id="service-shot-${i}" ${i ? 'hidden' : ''}>${ambient(step.video, step.alt)}</div>`).join('')}</div><p class="service-caption" aria-live="polite">${shootingSteps[0].description}</p></div><div class="service-list">${shootingSteps.map((step, i) => `<details class="service-item" ${i ? '' : 'open'}><summary aria-controls="service-shot-${i} service-copy-${i}"><small>0${i + 1}</small><h3>${step.title}</h3><span class="plus" aria-hidden="true">+</span></summary><p id="service-copy-${i}">${step.description}</p></details>`).join('')}</div></div></section>`;
+  const services = (location = 'home') =>
+    `<section class="services"><p class="eyebrow">Kayak çekimin, adım adım.</p><h2 class="section-title">HER AŞAMADA.<br>AYNI TUTKU.</h2><div class="service-layout"><div class="service-image"><div class="service-media">${shootingSteps.map((step, i) => `<div class="service-shot" id="service-shot-${i}" ${i ? 'hidden' : ''}>${renderMedia(`${location}.step.${i + 1}`)}</div>`).join('')}</div><p class="service-caption" aria-live="polite">${shootingSteps[0].description}</p></div><div class="service-list">${shootingSteps.map((step, i) => `<details class="service-item" ${i ? '' : 'open'}><summary aria-controls="service-shot-${i} service-copy-${i}"><small>0${i + 1}</small><h3>${step.title}</h3><span class="plus" aria-hidden="true">+</span></summary><p id="service-copy-${i}">${step.description}</p></details>`).join('')}</div></div></section>`;
   const manifesto = () => {
-    const photos = ['hero.jpg', 'snowboard.jpg', 'resort.jpg'];
-    const group = (reverse = false) =>
-      `<span class="manifesto-images" aria-hidden="true">${(reverse ? [...photos].reverse() : photos).map((photo) => `<span class="manifesto-photo"><img src="assets/${photo}" alt="" loading="lazy" decoding="async"></span>`).join('')}</span>`;
+    const group = (row, side) =>
+      `<span class="manifesto-images" aria-hidden="true">${Array.from({ length: 3 }, (_, index) => `<span class="manifesto-photo">${renderMedia(`home.manifesto.${row * 6 + side * 3 + index + 1}`, true)}</span>`).join('')}</span>`;
     return `<section class="manifesto intro-linked" aria-labelledby="manifesto-title"><div class="manifesto-track"><div class="manifesto-stage"><div class="manifesto-stack">
       <div class="manifesto-line manifesto-intro"><div class="manifesto-mask"><h2 id="manifesto-title" class="manifesto-title">DAĞIN HİKÂYESİNİ ANLATIYORUZ.</h2></div></div>
-      ${['KAYAK ÇEKİMİ', 'SİNEMATİK DİL', 'SENİN FİLMİN'].map((text, i) => `<div class="manifesto-line manifesto-chapter"><div class="manifesto-mask"><div class="manifesto-row">${group(i === 1)}<h3 class="manifesto-text">${text}</h3>${group(i !== 1)}</div></div></div>`).join('')}
+      ${['KAYAK ÇEKİMİ', 'SİNEMATİK DİL', 'SENİN FİLMİN'].map((text, i) => `<div class="manifesto-line manifesto-chapter"><div class="manifesto-mask"><div class="manifesto-row">${group(i, 0)}<h3 class="manifesto-text">${text}</h3>${group(i, 1)}</div></div></div>`).join('')}
       <div class="manifesto-line manifesto-outro"><div class="manifesto-mask"><p class="manifesto-impact">ANI YAŞATMAK İÇİN.</p></div><div class="manifesto-bottom"><p><strong>Sen kayarken biz çekelim.</strong>Kayak günün, sana ait bir filme dönüşsün.</p><a class="pill" href="#/hakkimizda">Ekibimizi tanı. <span>↗</span></a></div></div>
     </div></div></div></section>`;
   };
   const home = () =>
-    `<div class="opening auto-intro"><section class="hero"><div class="hero-heading"><div class="hero-top display"><span class="word">WE</span><div class="hero-inset"><img data-reel-poster src="${reelMedia().poster}" alt="Karla kaplı yamaçta kayakçı" fetchpriority="high"></div><span class="word">ARE</span></div><h1>SNOW MEDYA</h1></div><div class="hero-bottom"><p>Sen kay.<br>Biz hikâyeni çekelim.</p><a class="scroll-cue" href="#film-alani">Keşfet <span>↓</span></a><div class="hero-note">Pistte sen. Kadrajda hikâyen.<br>Profesyonel kayak çekimi.</div></div></section><section class="film-cover" id="film-alani"><img data-reel-poster src="${reelMedia().poster}" alt="Karla kaplı yamaçta kayakçı" class="parallax" loading="eager"><div class="intro-brand-layer" aria-hidden="true"><div class="intro-logo">${snowLogo}</div></div><div class="film-caption"><span>Kayak / Konsept seçki</span><span>Sen kay. Anın film olsun.</span></div></section></div>${manifesto()}<section class="about about-video" data-ambient-surface>${ambient('about-mountains-4161595', 'Karlı dağlar ve teleferikler üzerinde sakin hava çekimi')}<div class="about-content"><span class="eyebrow">Ekibimiz.</span><h2>YÜKSEKTE.<br>HAREKETTE.<br>HİKÂYENİN<br>İÇİNDE.</h2><p><strong>Kayak gününü profesyonel bir çekim ekibiyle sinematik bir filme dönüştür.</strong><br><br>Sen kayarken biz hareketini, manzarayı ve o anın hissini yakalarız. Çekimden kurguya, kayak gününü yeniden izlemek isteyeceğin bir hikâyeye dönüştürürüz.</p>${pill('Ekibimizi tanı.', '#/hakkimizda')}</div></section><section class="works home-works"><div class="section-head"><h2 class="section-title">FİLMLER.<br>İZ BIRAKIR.</h2><p class="eyebrow">Snow Medya<br>Konsept seçkisi / 01—04</p></div><div class="work-grid">${projects.map((p, i) => `<div class="work-stack-item">${card(p, i)}</div>`).join('')}</div><div class="works-more">${pill('Tüm filmler.', '#/isler')}</div></section><section class="disciplines"><p class="eyebrow">Aynı tutkuyu paylaşıyoruz.</p><div class="discipline-list"><span>ALP DİSİPLİNİ</span><span>SNOWBOARD</span><span>FREERIDE</span><span>DAĞ YAŞAMI</span></div></section>${services()}`;
+    `<div class="opening auto-intro" data-media-slot="home.intro"><section class="hero"><div class="hero-heading"><div class="hero-top display"><span class="word">WE</span><div class="hero-inset"><img data-reel-poster src="${reelMedia().poster}" alt="Karla kaplı yamaçta kayakçı" fetchpriority="high"></div><span class="word">ARE</span></div><h1>SNOW MEDYA</h1></div><div class="hero-bottom"><p>Sen kay.<br>Biz hikâyeni çekelim.</p><a class="scroll-cue" href="#film-alani">Keşfet <span>↓</span></a><div class="hero-note">Pistte sen. Kadrajda hikâyen.<br>Profesyonel kayak çekimi.</div></div></section><section class="film-cover" id="film-alani"><img data-reel-poster src="${reelMedia().poster}" alt="Karla kaplı yamaçta kayakçı" class="parallax" loading="eager"><div class="intro-brand-layer" aria-hidden="true"><div class="intro-logo">${snowLogo}</div></div><div class="film-caption"><span>Kayak / Konsept seçki</span><span>Sen kay. Anın film olsun.</span></div></section></div>${manifesto()}<section class="about about-video" data-ambient-surface>${renderMedia('home.about')}<div class="about-content"><span class="eyebrow">Ekibimiz.</span><h2>YÜKSEKTE.<br>HAREKETTE.<br>HİKÂYENİN<br>İÇİNDE.</h2><p><strong>Kayak gününü profesyonel bir çekim ekibiyle sinematik bir filme dönüştür.</strong><br><br>Sen kayarken biz hareketini, manzarayı ve o anın hissini yakalarız. Çekimden kurguya, kayak gününü yeniden izlemek isteyeceğin bir hikâyeye dönüştürürüz.</p>${pill('Ekibimizi tanı.', '#/hakkimizda')}</div></section><section class="works home-works"><div class="section-head"><h2 class="section-title">FİLMLER.<br>İZ BIRAKIR.</h2><p class="eyebrow">Snow Medya<br>Konsept seçkisi / 01—04</p></div><div class="work-grid">${projects.map((p, i) => `<div class="work-stack-item">${card(p, i)}</div>`).join('')}</div><div class="works-more">${pill('Tüm filmler.', '#/isler')}</div></section><section class="disciplines"><p class="eyebrow">Aynı tutkuyu paylaşıyoruz.</p><div class="discipline-list"><span>ALP DİSİPLİNİ</span><span>SNOWBOARD</span><span>FREERIDE</span><span>DAĞ YAŞAMI</span></div></section>${services()}`;
   const archive = () =>
-    `<section class="page-top"><p class="eyebrow">Snow Medya / Konsept seçkisi</p><h1 class="page-title">FİLMLER.</h1><p class="page-intro">Kendi kayak filmin için<br>görsel ilhamlar.</p></section><section class="works archive"><div class="work-grid">${projects.map(card).join('')}</div></section>`;
+    `<section class="page-top"><p class="eyebrow">Snow Medya / Konsept seçkisi</p><h1 class="page-title">FİLMLER.</h1><p class="page-intro">Kendi kayak filmin için<br>görsel ilhamlar.</p></section><section class="works archive"><div class="work-grid">${projects.map((p, i) => card(p, i, 'archive')).join('')}</div></section>`;
   const about = () =>
-    `<section class="page-top"><p class="eyebrow">Senin anına odaklanan ekip.</p><h1 class="page-title">EKİBİMİZ.<br>SENİNLE.</h1><p class="page-intro">Sen kaymanın keyfini çıkar.<br>Biz hikâyeni çekelim.</p></section><div class="about-banner"><img src="assets/resort.jpg" alt="Karlı zirvelerin geniş manzarası"></div><p class="statement">Odağımız <em>senin kayak deneyimin.</em> Profesyonel çekim ekibi olarak pistteki anlarını sinematik bir filme dönüştürmek için buradayız. Kayış tarzını, günün heyecanını ve sana ait detayları izliyoruz.</p><section class="about" style="padding-top:20px"><div class="about-photo"><img src="assets/snowboard.jpg" alt="Dağda snowboard" loading="lazy"></div><div class="about-content"><span class="eyebrow">Bakış açımız.</span><h2>HİSSET.<br>YAKALA.<br>PAYLAŞ.</h2><p>Bir inişin heyecanı. Zirvede kısa bir mola. Arkadaşlarınla pistte paylaştığın, sana özel bir kayak günü.<br><br>Çekimi senin deneyimin etrafında kuruyoruz. Kayışını ve dağdaki anlarını sana ait bir hikâyede buluşturuyoruz.</p>${pill('Nasıl çalışıyoruz?', '#/hizmetler')}</div></section>`;
+    `<section class="page-top"><p class="eyebrow">Senin anına odaklanan ekip.</p><h1 class="page-title">EKİBİMİZ.<br>SENİNLE.</h1><p class="page-intro">Sen kaymanın keyfini çıkar.<br>Biz hikâyeni çekelim.</p></section><div class="about-banner">${renderMedia('about.banner')}</div><p class="statement">Odağımız <em>senin kayak deneyimin.</em> Profesyonel çekim ekibi olarak pistteki anlarını sinematik bir filme dönüştürmek için buradayız. Kayış tarzını, günün heyecanını ve sana ait detayları izliyoruz.</p><section class="about" style="padding-top:20px"><div class="about-photo">${renderMedia('about.portrait')}</div><div class="about-content"><span class="eyebrow">Bakış açımız.</span><h2>HİSSET.<br>YAKALA.<br>PAYLAŞ.</h2><p>Bir inişin heyecanı. Zirvede kısa bir mola. Arkadaşlarınla pistte paylaştığın, sana özel bir kayak günü.<br><br>Çekimi senin deneyimin etrafında kuruyoruz. Kayışını ve dağdaki anlarını sana ait bir hikâyede buluşturuyoruz.</p>${pill('Nasıl çalışıyoruz?', '#/hizmetler')}</div></section>`;
   const contact = () =>
     `<section class="page-top"><p class="eyebrow">Kendi kayak filminin başlangıcı.</p><h1 class="page-title">İLETİŞİM.</h1></section><section class="contact-layout"><p>Kayak gününü nerede geçirmek, hangi anlarını filme almak istiyorsun?<br><br>Kendi kayak çekimini ve hayalindeki filmi birlikte konuşalım.</p><div class="contact-card"><span class="contact-status">Snow Medya</span><h2>Senin kayak filmin.</h2><p>Çekim talepleri için iletişim kanalları henüz açık değil.</p></div></section>`;
   const detail = (p) => {
     const i = projects.indexOf(p),
       next = projects[(i + 1) % projects.length];
-    return `<section class="page-top"><p class="eyebrow">${p.category} / ${p.type}</p><h1 class="page-title">${p.title}</h1><p class="page-intro">${p.subtitle}</p></section><div class="detail-hero" data-ambient-surface>${projectMedia(p)}</div><div class="detail-body"><dl><div><dt>Film</dt><dd>Snow Medya / Konsept</dd></div><div><dt>Disiplin</dt><dd>${p.category}</dd></div><div><dt>Format</dt><dd>Sinematik video</dd></div></dl><div><p>${p.description}</p><div class="credit-note">Görsel yön çalışmasıdır; tamamlanmış müşteri projesi değildir.</div></div></div><a class="next-project" href="#/is/${next.slug}"><p class="eyebrow">Sıradaki hikâye ↗</p><div class="display">${next.title}</div></a>`;
+    return `<section class="page-top"><p class="eyebrow">${p.category} / ${p.type}</p><h1 class="page-title">${p.title}</h1><p class="page-intro">${p.subtitle}</p></section><div class="detail-hero" data-ambient-surface>${projectMedia(p, 'detail')}</div><div class="detail-body"><dl><div><dt>Film</dt><dd>Snow Medya / Konsept</dd></div><div><dt>Disiplin</dt><dd>${p.category}</dd></div><div><dt>Format</dt><dd>Sinematik video</dd></div></dl><div><p>${p.description}</p><div class="credit-note">Görsel yön çalışmasıdır; tamamlanmış müşteri projesi değildir.</div></div></div><a class="next-project" href="#/is/${next.slug}"><p class="eyebrow">Sıradaki hikâye ↗</p><div class="display">${next.title}</div></a>`;
   };
   let animationContext, responsiveMotion, openingTimeline, clearOpening, ambientVideos;
   let introPlayed = false,
@@ -849,7 +839,7 @@ import { createAmbientVideos } from './ambient-video.js';
       view = about();
       title = 'Ekibimiz';
     } else if (path[0] === 'hizmetler') {
-      view = `<section class="page-top"><p class="eyebrow">Snow Medya / Kişisel kayak çekimi</p><h1 class="page-title">ÇEKİMLER.<br>SANA ÖZEL.</h1><p class="page-intro">Pistteki anlarından,<br>senin sinematik filmine.</p></section>${services()}`;
+      view = `<section class="page-top"><p class="eyebrow">Snow Medya / Kişisel kayak çekimi</p><h1 class="page-title">ÇEKİMLER.<br>SANA ÖZEL.</h1><p class="page-intro">Pistteki anlarından,<br>senin sinematik filmine.</p></section>${services('services')}`;
       title = 'Çekimler';
     } else if (path[0] === 'iletisim') {
       view = contact();
@@ -939,7 +929,7 @@ import { createAmbientVideos } from './ambient-video.js';
     if (film.open) closeFilm({ immediate: true });
     // Keep the current page visible while the destination's first image decodes.
     const slug = location.hash.replace(/^#\/?/, '').split('/')[1];
-    const project = projects.find((item) => item.slug === slug);
+    const project = mediaSlots[`detail.project.${slug}`];
     const variant = reelViewport.matches ? 'mobile' : 'desktop';
     const image = new Image();
     image.src = project

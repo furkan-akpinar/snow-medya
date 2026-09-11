@@ -660,6 +660,7 @@ button[disabled] {
 }
 .footer-bottom {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: 20px;
   border-top: 1px solid #3c4240;
@@ -671,6 +672,28 @@ button[disabled] {
 .footer-bottom button {
   padding: 0;
   font-size: 12px;
+}
+.footer-signature {
+  display: grid;
+  gap: 3px;
+  text-align: left;
+}
+.footer-signature > span {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.footer-signature strong {
+  font-family: 'Barlow Condensed', ImpactFallback, Impact, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #eceeee;
+}
+.footer-signature strong span,
+.footer-signature:hover strong {
+  color: #00fff3;
 }
 .menu-panel {
   border: 0;
@@ -1078,6 +1101,12 @@ button[disabled] {
   }
   .footer-bottom > span:nth-child(2) {
     display: none;
+  }
+  .footer-signature {
+    order: 1;
+    flex-basis: 100%;
+    justify-items: center;
+    margin-top: 4px;
   }
   .menu-panel {
     padding: 25px 20px;
@@ -1705,6 +1734,14 @@ button[disabled] {
 .ambient-media[data-ambient='project-snowboard-6947516'] > img,
 .ambient-media[data-ambient='project-snowboard-6947516'] > video {
   object-position: center top;
+}
+.ambient-media:is(
+    [data-ambient='scene-11714624'],
+    [data-ambient='scene-11499656'],
+    [data-ambient='scene-28454084']
+  )
+  > :is(img, video) {
+  object-position: center 65%;
 }
 .about-video {
   position: relative;

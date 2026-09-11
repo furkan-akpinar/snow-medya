@@ -107,12 +107,12 @@ Derleme önce `check` komutunu çalıştırır, ardından statik çıktıyı `di
 
 ## Kontroller
 
-| Komut                       | Kapsam                                                                                                    |
-| --------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `npm.cmd run check`         | İki uygulama JavaScript dosyasının sözdizimi ve gerekli yerel medya, font, kütüphane dosyalarının varlığı |
-| `npm.cmd run format:check`  | Kaynak, yapılandırma ve dokümantasyon dosyalarının Prettier biçimi                                        |
-| `npm.cmd run check:release` | Dosya boyutu sınırı, belirli anahtar kalıpları, medya kaynak kayıtları ve lisans dosyalarının tutarlılığı |
-| `npm.cmd run build`         | `check` ve Vite üretim derlemesi                                                                          |
+| Komut                       | Kapsam                                                                                                                      |
+| --------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `npm.cmd run check`         | Üç uygulama JavaScript dosyasının sözdizimi, gerekli dosyalar ve içerik alanları arasında medya kaynağı tekrarının kontrolü |
+| `npm.cmd run format:check`  | Kaynak, yapılandırma ve dokümantasyon dosyalarının Prettier biçimi                                                          |
+| `npm.cmd run check:release` | Dosya boyutu sınırı, belirli anahtar kalıpları, medya kaynak kayıtları ve lisans dosyalarının tutarlılığı                   |
+| `npm.cmd run build`         | `check` ve Vite üretim derlemesi                                                                                            |
 
 `npm.cmd run format` dosyaları biçimlendirerek değiştirir. Otomatik birim veya uçtan uca tarayıcı test paketi yoktur; bu komutlar görsel ve etkileşimli kontrollerin yerine geçmez. `check:release` kapsamlı bir gizli bilgi tarayıcısı değildir. Mevcut tarayıcı kontrol kayıtları: [genel QA](docs/QA.md), [intro](docs/INTRO.md), [metinler, header ve logo](docs/PERSONAL-SKI.md).
 
@@ -122,19 +122,20 @@ Derleme önce `check` komutunu çalıştırır, ardından statik çıktıyı `di
 index.html             Header, menü, footer ve ortak sayfa kabuğu
 src/main.js            İçerikler, proje seçkisi, rotalar ve animasyonlar
 src/ambient-video.js   Arka plan videolarının yüklenmesi ve oynatılması
+src/media-catalog.js   Her içerik alanına özel görsel ve video kaynakları
 src/styles.css         Yerleşim, tipografi ve responsive kurallar
 public/assets/         Videolar, posterler, görseller, fontlar ve kütüphaneler
 scripts/               Varlık ve teslim kontrol betikleri
 docs/                  Kontrol notları, ekran kayıtları ve görüntüleri
 ```
 
-**İçerik düzenleme:** proje adları ve açıklamaları `src/main.js` içindeki `projects` dizisinden; sayfa ve çekim metinleri aynı dosyadaki şablonlardan değiştirilir. Ortak menü, header ve footer metinleri `index.html` içindedir. Medya değişiklikleriyle birlikte `public/assets/provenance.json` kaydı da güncellenmelidir.
+**İçerik düzenleme:** proje adları ve açıklamaları `src/main.js` içindeki `projects` dizisinden; sayfa ve çekim metinleri aynı dosyadaki şablonlardan değiştirilir. Ortak menü, header ve footer metinleri `index.html` içindedir. Görsel ve videolar `src/media-catalog.js` üzerinden atanır; 44 içerik alanının her biri farklı bir özgün kaynak kullanır. Bir videonun masaüstü/mobil sürümleri ve posterleri aynı alana aittir. Medya değişiklikleriyle birlikte `public/assets/provenance.json` kaydı da güncellenmelidir.
 
 `node_modules/`, `dist/`, yerel ortam dosyaları ve geçici test kayıtları `.gitignore` ile depo dışında tutulur.
 
 ## Medya, fontlar ve lisanslar
 
-Görüntüler üçüncü taraf stok içeriklerdir; Snow Medya tarafından çekildikleri iddia edilmez. Dosya bazında kaynak, üretici, lisans, video boyutu ve düzenleme bilgileri [medya kaynak kaydında](public/assets/provenance.json) bulunur.
+Görüntüler üçüncü taraf stok içeriklerdir; Snow Medya tarafından çekildikleri iddia edilmez. Dosya bazında kaynak, üretici, lisans, video boyutu ve düzenleme bilgileri [medya kaynak kaydında](public/assets/provenance.json) bulunur. Bu kayıt, seçkiye eklenen 15 videonun ve 20 fotoğrafın üreticilerini de içerir; Pixabay kaynaklı 854878 ve 257961 numaralı içeriklerin Pexels sayfalarındaki CC0 bilgisi ayrıca korunur.
 
 | Kaynak                  | Mevcut atıflar ve lisans kayıtları                                                                                                                                                                          |
 | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
