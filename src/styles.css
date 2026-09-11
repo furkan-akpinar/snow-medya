@@ -145,6 +145,26 @@ button[disabled] {
   font-weight: 500;
   letter-spacing: 0.01em;
 }
+.about-content > .eyebrow,
+.services > .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Barlow Condensed', ImpactFallback, Impact, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.about-content > .eyebrow::before,
+.services > .eyebrow::before {
+  content: '';
+  width: 28px;
+  height: 3px;
+  flex-shrink: 0;
+  background: #00fff3;
+}
 .hero {
   min-height: 100svh;
   padding: 140px 3.3vw 40px;
@@ -289,9 +309,15 @@ button[disabled] {
   gap: 35px;
   border: 1px solid currentColor;
   border-radius: 50px;
-  padding: 13px 23px;
-  font-size: 15px;
-  font-weight: 500;
+  padding: 12px 23px;
+  min-height: 52px;
+  max-width: 100%;
+  font-family: 'Barlow Condensed', ImpactFallback, Impact, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
   transition:
     background 0.3s,
     color 0.3s;
@@ -307,6 +333,10 @@ button[disabled] {
   border-color: #eceeee;
 }
 .pill span {
+  flex-shrink: 0;
+  padding-left: 15px;
+  border-left: 1px solid color-mix(in srgb, currentColor 30%, transparent);
+  font-family: Inter, Arial, sans-serif;
   font-size: 23px;
   line-height: 1;
 }
@@ -441,16 +471,39 @@ button[disabled] {
   letter-spacing: -0.03em;
 }
 .work-info p {
-  font-size: 13px;
-  color: #a8afad;
-  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Barlow Condensed', ImpactFallback, Impact, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+  color: #c7cecb;
+  margin-top: 12px;
+}
+.work-info p::before {
+  content: '';
+  width: 18px;
+  height: 2px;
+  flex-shrink: 0;
+  background: #00fff3;
 }
 .tag {
-  border: 1px solid #747a77;
+  border: 1px solid #00fff3;
   border-radius: 30px;
-  padding: 4px 10px;
+  padding: 6px 12px;
   white-space: nowrap;
-  font-size: 12px;
+  flex-shrink: 0;
+  font-family: 'Barlow Condensed', ImpactFallback, Impact, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.055em;
+  text-transform: uppercase;
+  background: #00fff3;
+  color: #151918;
 }
 .works-more {
   display: flex;
@@ -561,6 +614,19 @@ button[disabled] {
   margin: 25px 0 20px 42px;
   line-height: 1.8;
   max-width: 440px;
+}
+.service-caption,
+.service-item > p {
+  border-left: 3px solid #00fff3;
+  padding-left: 18px;
+  font-family: 'Barlow Condensed', ImpactFallback, Impact, sans-serif;
+  font-size: clamp(24px, 2.1vw, 30px);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  text-wrap: pretty;
+  color: #151918;
 }
 .footer {
   padding: 45px 3.3vw 25px;
@@ -1325,10 +1391,11 @@ button[disabled] {
     letter-spacing: -0.035em;
   }
   .motion-enabled .work-stack-item .work-info p {
+    justify-content: center;
     color: #eceeee;
   }
   .motion-enabled .work-stack-item .tag {
-    background: #eceeee;
+    background: #00fff3;
     color: #151918;
     border: 0;
   }
@@ -1379,9 +1446,6 @@ button[disabled] {
     display: block;
     margin-top: 30px;
     max-width: 430px;
-    font-size: 16px;
-    line-height: 1.65;
-    color: #424946;
   }
 }
 @media (max-width: 850px) {
@@ -1501,8 +1565,21 @@ button[disabled] {
 }
 .manifesto-bottom p {
   margin-bottom: 30px;
-  font-size: 17px;
+  font-size: 16px;
+  font-weight: 500;
   line-height: 1.45;
+}
+.manifesto-bottom p strong {
+  display: block;
+  margin-bottom: 8px;
+  font-family: 'Barlow Condensed', ImpactFallback, Impact, sans-serif;
+  font-size: clamp(26px, 2.4vw, 34px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  text-decoration: underline #00fff3 3px;
+  text-underline-offset: 5px;
 }
 .manifesto-bottom .pill {
   background: #00fff3;

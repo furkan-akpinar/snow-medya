@@ -133,7 +133,7 @@ import { createAmbientVideos } from './ambient-video.js';
     return `<section class="manifesto intro-linked" aria-labelledby="manifesto-title"><div class="manifesto-track"><div class="manifesto-stage"><div class="manifesto-stack">
       <div class="manifesto-line manifesto-intro"><div class="manifesto-mask"><h2 id="manifesto-title" class="manifesto-title">DAĞIN HİKÂYESİNİ ANLATIYORUZ.</h2></div></div>
       ${['KAYAK ÇEKİMİ', 'SİNEMATİK DİL', 'SENİN FİLMİN'].map((text, i) => `<div class="manifesto-line manifesto-chapter"><div class="manifesto-mask"><div class="manifesto-row">${group(i === 1)}<h3 class="manifesto-text">${text}</h3>${group(i !== 1)}</div></div></div>`).join('')}
-      <div class="manifesto-line manifesto-outro"><div class="manifesto-mask"><p class="manifesto-impact">ANI YAŞATMAK İÇİN.</p></div><div class="manifesto-bottom"><p>Sen kayarken biz çekelim.<br>Kayak günün, sana ait bir filme dönüşsün.</p><a class="pill" href="#/hakkimizda">Ekibimizi tanı. <span>↗</span></a></div></div>
+      <div class="manifesto-line manifesto-outro"><div class="manifesto-mask"><p class="manifesto-impact">ANI YAŞATMAK İÇİN.</p></div><div class="manifesto-bottom"><p><strong>Sen kayarken biz çekelim.</strong>Kayak günün, sana ait bir filme dönüşsün.</p><a class="pill" href="#/hakkimizda">Ekibimizi tanı. <span>↗</span></a></div></div>
     </div></div></div></section>`;
   };
   const home = () =>
