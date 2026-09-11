@@ -250,15 +250,17 @@ button[disabled] {
   inset: 0;
   z-index: 2;
   display: grid;
+  grid-template: minmax(0, 1fr) / minmax(0, 1fr);
   place-items: center;
   pointer-events: none;
 }
 .intro-logo {
-  width: clamp(160px, 18vw, 280px);
+  width: min(30%, 430px);
+  container-type: inline-size;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 0;
   color: #eceeee;
   opacity: 0.75;
 }
@@ -267,7 +269,8 @@ button[disabled] {
   height: auto;
 }
 .intro-logo span {
-  font-size: clamp(18px, 2.15vw, 33px);
+  margin-top: 2.3cqw;
+  font-size: 11.95cqw;
   font-weight: 700;
   letter-spacing: 0.09em;
   white-space: nowrap;
@@ -281,6 +284,9 @@ button[disabled] {
   display: flex;
   justify-content: space-between;
   font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.015em;
 }
 .pill {
   display: inline-flex;
@@ -486,6 +492,9 @@ button[disabled] {
   max-width: 1000px;
   margin-bottom: 80px;
 }
+.services > .eyebrow {
+  margin-bottom: 25px;
+}
 .service-layout {
   display: grid;
   min-width: 0;
@@ -498,6 +507,22 @@ button[disabled] {
   top: 40px;
   border-radius: 5px;
   overflow: hidden;
+}
+.service-media {
+  position: relative;
+  height: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.service-shot {
+  position: absolute;
+  inset: 0;
+}
+.service-shot[hidden] {
+  display: none;
+}
+.service-caption {
+  display: none;
 }
 .service-list {
   min-width: 0;
@@ -521,6 +546,7 @@ button[disabled] {
   font-size: 14px;
 }
 .service-item summary h3 {
+  min-width: 0;
   font-family: 'Barlow Condensed', Impact, sans-serif;
   font-size: clamp(40px, 4.7vw, 78px);
   font-weight: 700;
@@ -541,20 +567,6 @@ button[disabled] {
   margin: 25px 0 20px 42px;
   line-height: 1.8;
   max-width: 440px;
-}
-.service-item ul {
-  padding: 0;
-  margin: 20px 0 10px 42px;
-  list-style: none;
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.service-item li {
-  border: 1px solid #15191850;
-  border-radius: 30px;
-  padding: 5px 12px;
-  font-size: 13px;
 }
 .footer {
   padding: 45px 3.3vw 25px;
@@ -611,6 +623,7 @@ button[disabled] {
   background: #00fff3;
   color: #151918;
   overflow: auto;
+  overscroll-behavior: contain;
 }
 .menu-panel::backdrop {
   background: #151918;
@@ -618,8 +631,11 @@ button[disabled] {
 .menu-top {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   font-size: 14px;
+}
+.menu-panel :is(a, button):focus-visible {
+  outline-color: #151918;
 }
 .menu-close {
   display: flex;
@@ -981,9 +997,6 @@ button[disabled] {
   .service-item p {
     margin-left: 0;
   }
-  .service-item ul {
-    margin-left: 0;
-  }
   .footer {
     padding: 30px 20px 20px;
   }
@@ -1083,11 +1096,12 @@ button[disabled] {
     font-size: clamp(18px, 5vw, 22px);
   }
   .intro-logo {
-    width: 48vw;
-    max-width: 220px;
+    width: 65%;
+    max-width: 290px;
   }
   .intro-logo span {
-    font-size: 5vw;
+    margin-top: 3.2cqw;
+    font-size: 10.417cqw;
   }
   .hero {
     min-height: 78svh;
@@ -1223,7 +1237,8 @@ button[disabled] {
   inset: 0;
   z-index: 4;
   width: 100%;
-  height: 100%;
+  height: calc(100% - var(--intro-overlap, 0px));
+  --covered-height: var(--intro-overlap, 0px);
   min-height: 0;
   margin: 0;
 }
@@ -1232,7 +1247,7 @@ button[disabled] {
 }
 .opening.auto-intro .film-cover > img,
 .opening.auto-intro .film-cover > video {
-  height: 100%;
+  height: calc(100% + var(--covered-height));
   top: 0;
 }
 .manifesto.intro-linked {
@@ -1244,9 +1259,6 @@ button[disabled] {
 }
 .manifesto.intro-linked .manifesto-intro > .manifesto-mask {
   padding-top: 20px;
-}
-.opening.auto-intro .film-caption {
-  bottom: calc(var(--intro-overlap, 0px) + 35px);
 }
 .intro-pending .film-cover,
 .intro-lock .manifesto-intro .motion-char {
@@ -1357,7 +1369,7 @@ button[disabled] {
   .interactive-services .service-item summary h3 {
     font-size: clamp(44px, 5.9vw, 100px);
   }
-  .interactive-services .service-item :is(.plus, p, ul) {
+  .interactive-services .service-item :is(.plus, p) {
     display: none;
   }
   .interactive-services .service-image {
@@ -1366,16 +1378,18 @@ button[disabled] {
     top: 0;
     overflow: visible;
   }
-  .interactive-services .service-image img {
+  .interactive-services .service-media {
     height: 29svh;
     min-height: 180px;
     border-radius: 5px;
   }
   .service-caption {
+    display: block;
     margin-top: 30px;
     max-width: 430px;
     font-size: 16px;
     line-height: 1.65;
+    color: #424946;
   }
 }
 @media (max-width: 850px) {

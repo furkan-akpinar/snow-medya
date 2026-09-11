@@ -91,8 +91,40 @@ import { createAmbientVideos } from './ambient-video.js';
       : `<img src="assets/${p.image}" alt="${p.category} ve karlı dağ manzarası" loading="lazy" ${i === 3 ? 'style="object-position:75% center"' : ''}>`;
   const card = (p, i) =>
     `<a class="work-card" data-ambient-surface href="#/is/${p.slug}" aria-label="${p.title} filmini incele"><div class="work-media">${projectMedia(p, i)}<span class="work-number">0${i + 1} / SNOW MEDYA</span><span class="work-arrow" aria-hidden="true">↗</span></div><div class="work-info"><div><h3>${p.title}</h3><p>${p.type}</p></div><span class="tag">${p.category}.</span></div></a>`;
+  const shootingSteps = [
+    {
+      title: 'Tanışalım.',
+      description: 'Kayak deneyimini ve nasıl bir film istediğini konuşalım.',
+      video: 'reel-4274798',
+      alt: 'Karlı pistte kayak deneyimini yaşayan sporcu',
+    },
+    {
+      title: 'Planlayalım.',
+      description: 'Çekimin yerini, zamanını ve akışını birlikte belirleyelim.',
+      video: 'about-mountains-4161595',
+      alt: 'Çekim rotasına ilham veren dağlar ve teleferikler',
+    },
+    {
+      title: 'Pistte Buluşalım.',
+      description: 'Kayak anlarını profesyonel çekimlerle kaydedelim.',
+      video: 'project-ski-11246371',
+      alt: 'Pistte kayarken görüntülenen kırmızı ceketli kayakçı',
+    },
+    {
+      title: 'Filmini Hazırlayalım.',
+      description: 'Görüntüleri seçip sinematik bir kurguya dönüştürelim.',
+      video: 'service-editing-7699548',
+      alt: 'Bilgisayar ekranında video kurgu zaman çizelgesi',
+    },
+    {
+      title: 'Hikâyeni Paylaş.',
+      description: 'Filminle pistteki anlarını yeniden yaşa ve paylaş.',
+      video: 'project-snowboard-6947516',
+      alt: 'Karlı yamaçta yeniden izlenecek bir snowboard anı',
+    },
+  ];
   const services = () =>
-    `<section class="services"><p class="eyebrow" style="margin-bottom:25px">Kayak çekimin, adım adım.</p><h2 class="section-title">HER AŞAMADA.<br>AYNI TUTKU.</h2><div class="service-layout"><div class="service-image"><img src="assets/snowboard.jpg" alt="Karlı yamaçta dağ sporcusu" loading="lazy"></div><div class="service-list"><details class="service-item" open><summary><small>01</small><h3>Çekim Planı.</h3><span class="plus" aria-hidden="true">+</span></summary><p>Kayak gününü ve nasıl bir film istediğini birlikte konuşuyoruz. Kayış tarzını, pist seçimini, hava koşullarını ve çekim beklentini aynı planda buluşturuyoruz.</p><ul><li>Kayış tarzın</li><li>Pist seçimi</li><li>Çekim planı</li></ul></details><details class="service-item"><summary><small>02</small><h3>Pistte Çekim.</h3><span class="plus" aria-hidden="true">+</span></summary><p>Sen kayarken profesyonel çekim ekibimiz anlarına odaklanır. İnişlerini, küçük detayları ve dağ manzarasını sinematik bir anlatım için kayda alırız.</p><ul><li>Takip çekimi</li><li>Detaylar</li><li>Manzara</li></ul></details><details class="service-item"><summary><small>03</small><h3>Kurgu ve Renk.</h3><span class="plus" aria-hidden="true">+</span></summary><p>Pistteki görüntülerini sana ait bir filme dönüştürüyoruz. Kurgu, renk ve sesle kayak gününün ritmini kuruyor; yeniden izleyip paylaşmak isteyeceğin anları bir araya getiriyoruz.</p><ul><li>Kurgu & renk</li><li>Ses tasarımı</li><li>Sosyal içerik</li></ul></details></div></div></section>`;
+    `<section class="services"><p class="eyebrow">Kayak çekimin, adım adım.</p><h2 class="section-title">HER AŞAMADA.<br>AYNI TUTKU.</h2><div class="service-layout"><div class="service-image"><div class="service-media">${shootingSteps.map((step, i) => `<div class="service-shot" id="service-shot-${i}" ${i ? 'hidden' : ''}>${ambient(step.video, step.alt)}</div>`).join('')}</div><p class="service-caption" aria-live="polite">${shootingSteps[0].description}</p></div><div class="service-list">${shootingSteps.map((step, i) => `<details class="service-item" ${i ? '' : 'open'}><summary aria-controls="service-shot-${i} service-copy-${i}"><small>0${i + 1}</small><h3>${step.title}</h3><span class="plus" aria-hidden="true">+</span></summary><p id="service-copy-${i}">${step.description}</p></details>`).join('')}</div></div></section>`;
   const manifesto = () => {
     const photos = ['hero.jpg', 'snowboard.jpg', 'resort.jpg'];
     const group = (reverse = false) =>
@@ -104,13 +136,13 @@ import { createAmbientVideos } from './ambient-video.js';
     </div></div></div></section>`;
   };
   const home = () =>
-    `<div class="opening auto-intro"><section class="hero"><div class="hero-heading"><div class="hero-top display"><span class="word">WE</span><div class="hero-inset"><img data-reel-poster src="${reelMedia().poster}" alt="Karla kaplı yamaçta kayakçı" fetchpriority="high"></div><span class="word">ARE</span></div><h1>SNOW MEDYA</h1></div><div class="hero-bottom"><p>Sen kay.<br>Biz hikâyeni çekelim.</p><a class="scroll-cue" href="#film-alani">Keşfet <span>↓</span></a><div class="hero-note">Pistte sen. Kadrajda hikâyen.<br>Profesyonel kayak çekimi.</div></div></section><section class="film-cover" id="film-alani"><img data-reel-poster src="${reelMedia().poster}" alt="Karla kaplı yamaçta kayakçı" class="parallax" loading="eager"><div class="intro-brand-layer" aria-hidden="true"><div class="intro-logo">${snowLogo}</div></div><div class="film-caption"><span>Snow Medya / Görsel seçki</span><span>Sen kay. Anın film olsun.</span></div></section></div>${manifesto()}<section class="about about-video" data-ambient-surface>${ambient('about-mountains-4161595', 'Karlı dağlar ve teleferikler üzerinde sakin hava çekimi')}<div class="about-content"><span class="eyebrow">Ekibimiz.</span><h2>YÜKSEKTE.<br>HAREKETTE.<br>HİKÂYENİN<br>İÇİNDE.</h2><p><strong>Kayak gününü profesyonel bir çekim ekibiyle sinematik bir filme dönüştür.</strong><br><br>Sen kayarken biz hareketini, manzarayı ve o anın hissini yakalarız. Çekimden kurguya, kayak gününü yeniden izlemek isteyeceğin bir hikâyeye dönüştürürüz.</p>${pill('Ekibimizi tanı.', '#/hakkimizda')}</div></section><section class="works home-works"><div class="section-head"><h2 class="section-title">FİLMLER.<br>İZ BIRAKIR.</h2><p class="eyebrow">Snow Medya<br>Konsept seçkisi / 01—04</p></div><div class="work-grid">${projects.map((p, i) => `<div class="work-stack-item">${card(p, i)}</div>`).join('')}</div><div class="works-more">${pill('Tüm filmler.', '#/isler')}</div></section><section class="disciplines"><p class="eyebrow">Aynı tutkuyu paylaşıyoruz.</p><div class="discipline-list"><span>ALP DİSİPLİNİ</span><span>SNOWBOARD</span><span>FREERIDE</span><span>DAĞ YAŞAMI</span></div></section>${services()}`;
+    `<div class="opening auto-intro"><section class="hero"><div class="hero-heading"><div class="hero-top display"><span class="word">WE</span><div class="hero-inset"><img data-reel-poster src="${reelMedia().poster}" alt="Karla kaplı yamaçta kayakçı" fetchpriority="high"></div><span class="word">ARE</span></div><h1>SNOW MEDYA</h1></div><div class="hero-bottom"><p>Sen kay.<br>Biz hikâyeni çekelim.</p><a class="scroll-cue" href="#film-alani">Keşfet <span>↓</span></a><div class="hero-note">Pistte sen. Kadrajda hikâyen.<br>Profesyonel kayak çekimi.</div></div></section><section class="film-cover" id="film-alani"><img data-reel-poster src="${reelMedia().poster}" alt="Karla kaplı yamaçta kayakçı" class="parallax" loading="eager"><div class="intro-brand-layer" aria-hidden="true"><div class="intro-logo">${snowLogo}</div></div><div class="film-caption"><span>Kayak / Konsept seçki</span><span>Sen kay. Anın film olsun.</span></div></section></div>${manifesto()}<section class="about about-video" data-ambient-surface>${ambient('about-mountains-4161595', 'Karlı dağlar ve teleferikler üzerinde sakin hava çekimi')}<div class="about-content"><span class="eyebrow">Ekibimiz.</span><h2>YÜKSEKTE.<br>HAREKETTE.<br>HİKÂYENİN<br>İÇİNDE.</h2><p><strong>Kayak gününü profesyonel bir çekim ekibiyle sinematik bir filme dönüştür.</strong><br><br>Sen kayarken biz hareketini, manzarayı ve o anın hissini yakalarız. Çekimden kurguya, kayak gününü yeniden izlemek isteyeceğin bir hikâyeye dönüştürürüz.</p>${pill('Ekibimizi tanı.', '#/hakkimizda')}</div></section><section class="works home-works"><div class="section-head"><h2 class="section-title">FİLMLER.<br>İZ BIRAKIR.</h2><p class="eyebrow">Snow Medya<br>Konsept seçkisi / 01—04</p></div><div class="work-grid">${projects.map((p, i) => `<div class="work-stack-item">${card(p, i)}</div>`).join('')}</div><div class="works-more">${pill('Tüm filmler.', '#/isler')}</div></section><section class="disciplines"><p class="eyebrow">Aynı tutkuyu paylaşıyoruz.</p><div class="discipline-list"><span>ALP DİSİPLİNİ</span><span>SNOWBOARD</span><span>FREERIDE</span><span>DAĞ YAŞAMI</span></div></section>${services()}`;
   const archive = () =>
     `<section class="page-top"><p class="eyebrow">Snow Medya / Konsept seçkisi</p><h1 class="page-title">FİLMLER.</h1><p class="page-intro">Kendi kayak filmin için<br>görsel ilhamlar.</p></section><section class="works archive"><div class="work-grid">${projects.map(card).join('')}</div></section>`;
   const about = () =>
     `<section class="page-top"><p class="eyebrow">Senin anına odaklanan ekip.</p><h1 class="page-title">EKİBİMİZ.<br>SENİNLE.</h1><p class="page-intro">Sen kaymanın keyfini çıkar.<br>Biz hikâyeni çekelim.</p></section><div class="about-banner"><img src="assets/resort.jpg" alt="Karlı zirvelerin geniş manzarası"></div><p class="statement">Odağımız <em>senin kayak deneyimin.</em> Profesyonel çekim ekibi olarak pistteki anlarını sinematik bir filme dönüştürmek için buradayız. Kayış tarzını, günün heyecanını ve sana ait detayları izliyoruz.</p><section class="about" style="padding-top:20px"><div class="about-photo"><img src="assets/snowboard.jpg" alt="Dağda snowboard" loading="lazy"></div><div class="about-content"><span class="eyebrow">Bakış açımız.</span><h2>HİSSET.<br>YAKALA.<br>PAYLAŞ.</h2><p>Bir inişin heyecanı. Zirvede kısa bir mola. Arkadaşlarınla pistte paylaştığın, sana özel bir kayak günü.<br><br>Çekimi senin deneyimin etrafında kuruyoruz. Kayışını ve dağdaki anlarını sana ait bir hikâyede buluşturuyoruz.</p>${pill('Nasıl çalışıyoruz?', '#/hizmetler')}</div></section>`;
   const contact = () =>
-    `<section class="page-top"><p class="eyebrow">Kendi kayak filminin başlangıcı.</p><h1 class="page-title">İLETİŞİM.</h1></section><section class="contact-layout"><p>Kayak gününü nerede geçirmek, hangi anlarını filme almak istiyorsun?<br><br>Kendi kayak çekimini ve hayalindeki filmi birlikte konuşalım.</p><div class="contact-card"><span class="contact-status">Snow Medya</span><h2>Senin kayak filmin.</h2><p>İletişim kanallarımız yakında burada. Kayak planını ve nasıl bir film istediğini konuşmak için bu alandan bize ulaşabileceksin.</p><p style="margin-top:30px">Kişisel kayak çekimi<br>Sinematik kurgu ve renk<br>Paylaşmak için sana ait bir film</p></div></section>`;
+    `<section class="page-top"><p class="eyebrow">Kendi kayak filminin başlangıcı.</p><h1 class="page-title">İLETİŞİM.</h1></section><section class="contact-layout"><p>Kayak gününü nerede geçirmek, hangi anlarını filme almak istiyorsun?<br><br>Kendi kayak çekimini ve hayalindeki filmi birlikte konuşalım.</p><div class="contact-card"><span class="contact-status">Snow Medya</span><h2>Senin kayak filmin.</h2><p>Çekim talepleri için iletişim kanalları henüz açık değil.</p></div></section>`;
   const detail = (p) => {
     const i = projects.indexOf(p),
       next = projects[(i + 1) % projects.length];
@@ -172,10 +204,11 @@ import { createAmbientVideos } from './ambient-video.js';
     const chars = element.querySelectorAll('.motion-char');
     return gsap.fromTo(
       chars,
-      { rotationX: -85, rotationZ: -9, yPercent: 45, autoAlpha: 0 },
+      { rotationX: -85, rotationZ: -9, y: 0, yPercent: 45, autoAlpha: 0 },
       {
         rotationX: 0,
         rotationZ: 0,
+        y: 0,
         yPercent: 0,
         autoAlpha: 1,
         duration: 0.85,
@@ -299,7 +332,7 @@ import { createAmbientVideos } from './ambient-video.js';
       opening.classList.add('intro-complete');
       opening.dataset.introPhase = 'complete';
       gsap.set([cover, ...controls], {
-        clearProps: 'left,top,width,height,borderRadius,opacity,visibility',
+        clearProps: 'left,top,width,height,borderRadius,opacity,visibility,--covered-height',
       });
       gsap.set(section, { clearProps: 'transform' });
       gsap.set(title.querySelectorAll('.motion-char'), {
@@ -335,7 +368,7 @@ import { createAmbientVideos } from './ambient-video.js';
         transformOrigin: '50% 100%',
       });
       gsap.set(inset, { [mobile ? 'height' : 'width']: 0 });
-      gsap.set(cover, { autoAlpha: 0, borderRadius: 10 });
+      gsap.set(cover, { autoAlpha: 0, borderRadius: 10, '--covered-height': '0px' });
       gsap.set(controls, { autoAlpha: 0 });
       gsap.set(section, { y: overlap });
       placeCover();
@@ -432,6 +465,18 @@ import { createAmbientVideos } from './ambient-video.js';
         manifestoStart,
       );
       openingTimeline.to(section, { y: 0, duration: 0.55, ease: 'power3.inOut' }, manifestoStart);
+      // Shrink the visible frame with the manifesto edge, keeping the same video
+      // plane underneath. The logo is centred inside that frame at every stage.
+      openingTimeline.to(
+        cover,
+        {
+          height: () => opening.clientHeight - overlap,
+          '--covered-height': overlap + 'px',
+          duration: 0.55,
+          ease: 'power3.inOut',
+        },
+        manifestoStart,
+      );
       openingTimeline.to(
         titleChars,
         {
@@ -460,58 +505,67 @@ import { createAmbientVideos } from './ambient-video.js';
     };
   }
 
-  function animateServices(desktop) {
+  function configureServices() {
     const section = $('.services');
-    if (!section || !desktop) return;
+    if (!section) return;
     const items = [...section.querySelectorAll('.service-item')];
-    const photo = $('.service-image img', section);
-    const caption = document.createElement('p');
-    caption.className = 'service-caption';
-    caption.setAttribute('aria-live', 'polite');
-    photo.parentElement.append(caption);
+    const shots = [...section.querySelectorAll('.service-shot')];
+    const caption = $('.service-caption', section);
     section.classList.add('interactive-services');
     let active = -1;
-    const activate = (index) => {
+    let transition;
+    const activate = (index, animate = true) => {
       if (index === active) return;
       active = index;
+      transition?.kill();
       items.forEach((item, i) => {
         item.open = i === index;
         item.classList.toggle('is-active', i === index);
+        shots[i].hidden = i !== index;
       });
-      caption.textContent = `${$('p', items[index]).textContent} ${[...items[index].querySelectorAll('li')].map((item) => item.textContent).join(' · ')}`;
-      photo.src = `assets/${['resort.jpg', 'snowboard.jpg', 'hero.jpg'][index]}`;
-      photo.alt = ['Karlı kayak merkezi', 'Karlı yamaçta snowboard', 'Dağda kayak'][index];
-      gsap.fromTo(
-        [photo, caption],
-        { opacity: 0, y: 16 },
-        { opacity: 1, y: 0, duration: 0.45, stagger: 0.06, overwrite: true },
-      );
+      caption.textContent = shootingSteps[index].description;
+      // Hidden shots never request video. The shared observer resumes the selected
+      // shot only when its frame is visible and no modal covers the page.
+      ambientVideos?.sync();
+      if (hasGsap && !reduced && animate) {
+        transition = gsap.fromTo(
+          [shots[index], caption],
+          { opacity: 0, y: 16 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.45,
+            stagger: 0.06,
+            overwrite: true,
+            onComplete: () =>
+              gsap.set([shots[index], caption], { clearProps: 'opacity,transform' }),
+          },
+        );
+      }
+      refreshMeasurements();
     };
-    activate(0);
-    const handlers = items.map((item, i) => {
-      const handler = (event) => {
-        event.preventDefault();
-        activate(i);
-      };
-      $('summary', item).addEventListener('click', handler);
-      return handler;
+    activate(0, false);
+    items.forEach((item, i) => {
+      $('summary', item).addEventListener(
+        'click',
+        (event) => {
+          // Preserve the mobile accordion's ability to collapse its current text.
+          if (reelViewport.matches && i === active) return;
+          event.preventDefault();
+          activate(i);
+        },
+        { signal: pageEvents.signal },
+      );
     });
-    return () => {
-      handlers.forEach((handler, i) =>
-        $('summary', items[i]).removeEventListener('click', handler),
-      );
-      items.forEach((item, i) => {
-        item.open = i === 0;
-        item.classList.remove('is-active');
-      });
-      gsap.killTweensOf([photo, caption]);
-      photo.src = 'assets/snowboard.jpg';
-      photo.alt = 'Karlı yamaçta dağ sporcusu';
-      photo.style.removeProperty('opacity');
-      photo.style.removeProperty('transform');
-      caption.remove();
-      section.classList.remove('interactive-services');
-    };
+    reelViewport.addEventListener(
+      'change',
+      () => {
+        if (!reelViewport.matches) items[active].open = true;
+        refreshMeasurements();
+      },
+      { signal: pageEvents.signal },
+    );
+    pageEvents.signal.addEventListener('abort', () => transition?.kill(), { once: true });
   }
 
   function animateManifesto(desktop) {
@@ -729,9 +783,7 @@ import { createAmbientVideos } from './ambient-video.js';
               );
             });
           }
-          const clearServices = animateServices(desktop);
           return () => {
-            clearServices?.();
             clearManifesto?.();
           };
         },
@@ -821,7 +873,8 @@ import { createAmbientVideos } from './ambient-video.js';
     $('#main').addEventListener(
       'toggle',
       (event) => {
-        if (!event.target.closest('.interactive-services')) refreshMeasurements();
+        if (reelViewport.matches || !event.target.closest('.interactive-services'))
+          refreshMeasurements();
       },
       {
         capture: true,
@@ -854,6 +907,7 @@ import { createAmbientVideos } from './ambient-video.js';
       blocked: () => film.open || $('#menu').open,
       signal: pageEvents.signal,
     });
+    configureServices();
     const version = pageVersion;
     const poster = $('[data-reel-poster]');
     const ready = Promise.all([document.fonts.ready, poster?.decode().catch(() => {})]);

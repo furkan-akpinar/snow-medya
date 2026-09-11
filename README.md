@@ -136,12 +136,12 @@ docs/                  Kontrol notları, ekran kayıtları ve görüntüleri
 
 Görüntüler üçüncü taraf stok içeriklerdir; Snow Medya tarafından çekildikleri iddia edilmez. Dosya bazında kaynak, üretici, lisans, video boyutu ve düzenleme bilgileri [medya kaynak kaydında](public/assets/provenance.json) bulunur.
 
-| Kaynak                  | Mevcut atıflar ve lisans kayıtları                                                                                                                                              |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Pexels                  | Videolar: Adrien JACTA (intro / 4274798), Ella Wei, Igor Deshkin, Grisha Grishkoff, Be The Observer. Fotoğraf: Mikhail Nilov. [Pexels lisansı](https://www.pexels.com/license/) |
-| Unsplash                | Fotoğraflar: Tino Rischawy ve Lorin Both. [Unsplash lisansı](https://unsplash.com/license)                                                                                      |
-| Fontlar                 | SIL Open Font License 1.1: [Barlow Condensed](public/assets/licenses/Barlow-OFL.txt) · [Inter](public/assets/licenses/Inter-OFL.txt)                                            |
-| Animasyon kütüphaneleri | [Lenis — MIT](public/assets/licenses/Lenis-MIT.txt) · [GSAP Standard License](https://gsap.com/standard-license); GSAP dosya başlıkları korunur                                 |
+| Kaynak                  | Mevcut atıflar ve lisans kayıtları                                                                                                                                                                          |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Pexels                  | Videolar: Adrien JACTA (intro / 4274798), Ella Wei, Igor Deshkin, Grisha Grishkoff, Be The Observer, Gilmer Diaz Estela (kurgu). Fotoğraf: Mikhail Nilov. [Pexels lisansı](https://www.pexels.com/license/) |
+| Unsplash                | Fotoğraflar: Tino Rischawy ve Lorin Both. [Unsplash lisansı](https://unsplash.com/license)                                                                                                                  |
+| Fontlar                 | SIL Open Font License 1.1: [Barlow Condensed](public/assets/licenses/Barlow-OFL.txt) · [Inter](public/assets/licenses/Inter-OFL.txt)                                                                        |
+| Animasyon kütüphaneleri | [Lenis — MIT](public/assets/licenses/Lenis-MIT.txt) · [GSAP Standard License](https://gsap.com/standard-license); GSAP dosya başlıkları korunur                                                             |
 
 Proje için ayrı bir kök lisans dosyası tanımlanmamıştır. npm bağımlılıklarının lisansları ilgili paketlerde bulunur. Görsel hareket referansı: [Sadu Media](https://www.sadumedia.com/). README ekran kayıtları ve görüntüleri bu uygulamanın kendi arayüzünden alınmıştır.
 

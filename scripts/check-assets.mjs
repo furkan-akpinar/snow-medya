@@ -26,6 +26,7 @@ for (const name of [
   'project-ski-11246371',
   'project-snowboard-6947516',
   'project-resort-4185345',
+  'service-editing-7699548',
 ]) {
   for (const variant of ['desktop', 'mobile']) {
     required.add(`${name}-${variant}.mp4`);

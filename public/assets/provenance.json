@@ -274,6 +274,49 @@
       "sourceSha256": "425f677b05bd33d30bd373f2e2ae92dd172c68bbddb136df1aecd457076a118b",
       "audio": "No audio track; ambient autoplay is muted.",
       "edit": "H.264, yuv420p, 24 fps, faststart. Desktop CRF 23, mobile CRF 25. Selected clip, no stretching."
+    },
+    {
+      "file": "service-editing-7699548-desktop.mp4",
+      "poster": "service-editing-7699548-desktop.jpg",
+      "sourcePage": "https://www.pexels.com/video/computer-video-editing-7699548/",
+      "sourceUrl": "https://videos.pexels.com/video-files/7699548/7699548-hd_1920_1080_30fps.mp4",
+      "pexelsId": 7699548,
+      "creator": "Gilmer Diaz Estela",
+      "license": "https://www.pexels.com/license/",
+      "width": 1280,
+      "height": 720,
+      "frameRate": 24,
+      "durationSeconds": 8,
+      "posterTimeSeconds": 1.25,
+      "bytes": 744414,
+      "posterBytes": 66019,
+      "sourceSha256": "c79ee7e8f07d226bfeee5fe0c2bb181ca5649ef8d995f950aa06754b01b7363d",
+      "edit": "Source seconds 1–9; H.264 CRF 24, faststart, no audio. Original landscape composition.",
+      "usage": "04 — Filmini Hazırlayalım. Stock footage illustrating post-production; not a Snow Medya client project."
+    },
+    {
+      "file": "service-editing-7699548-mobile.mp4",
+      "poster": "service-editing-7699548-mobile.jpg",
+      "sourcePage": "https://www.pexels.com/video/computer-video-editing-7699548/",
+      "sourceUrl": "https://videos.pexels.com/video-files/7699548/7699548-hd_1920_1080_30fps.mp4",
+      "pexelsId": 7699548,
+      "creator": "Gilmer Diaz Estela",
+      "license": "https://www.pexels.com/license/",
+      "width": 640,
+      "height": 640,
+      "frameRate": 24,
+      "durationSeconds": 8,
+      "posterTimeSeconds": 1.25,
+      "bytes": 304032,
+      "posterBytes": 43455,
+      "sourceSha256": "c79ee7e8f07d226bfeee5fe0c2bb181ca5649ef8d995f950aa06754b01b7363d",
+      "edit": "Source seconds 1–9; H.264 CRF 26, faststart, no audio. Square centre crop retaining the editing timeline.",
+      "usage": "04 — Filmini Hazırlayalım. Stock footage illustrating post-production; not a Snow Medya client project."
+    },
+    {
+      "file": "favicon-snow-medya.svg",
+      "source": "Existing .brand mountain path in index.html and local Inter Bold (font-6.ttf) wordmark. Exported as paths for browser-tab use; original README icon remains unchanged.",
+      "fontLicense": "licenses/Inter-OFL.txt"
     }
   ],
   "notes": "These are third-party stock photographs/footage licensed for website reuse. Do not falsely imply Snow Medya filmed them or an endorsement from depicted persons. Unsplash permits free commercial reuse/modification without attribution (appreciated), excludes sale of unmodified images and competing image services. Pexels permits free reuse and modifications without attribution (appreciated), excludes unaltered resale, implied endorsements and stock redistribution.",
@@ -321,6 +364,38 @@
       ],
       "licenseFile": "licenses/Inter-OFL.txt",
       "source": "https://github.com/google/fonts/tree/main/ofl/inter"
+    }
+  ],
+  "serviceSteps": [
+    {
+      "step": 1,
+      "title": "Tanışalım",
+      "media": "reel-4274798",
+      "purpose": "Kişisel kayak filmi için görsel başlangıç."
+    },
+    {
+      "step": 2,
+      "title": "Planlayalım",
+      "media": "about-mountains-4161595",
+      "purpose": "Pist ve dağ ortamını planlama."
+    },
+    {
+      "step": 3,
+      "title": "Pistte Buluşalım",
+      "media": "project-ski-11246371",
+      "purpose": "Pistte kayak hareketi."
+    },
+    {
+      "step": 4,
+      "title": "Filmini Hazırlayalım",
+      "media": "service-editing-7699548",
+      "purpose": "Video kurgu zaman çizelgesi."
+    },
+    {
+      "step": 5,
+      "title": "Hikâyeni Paylaş",
+      "media": "project-snowboard-6947516",
+      "purpose": "Yeniden izlenecek ve paylaşılacak kış sporu anı."
     }
   ]
 }
