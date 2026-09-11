@@ -102,18 +102,12 @@ button[disabled] {
   left: 50%;
   transform: translateX(-50%);
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 2px;
 }
-.brand svg {
-  width: 61px;
-  height: 28px;
-}
-.brand span {
-  font-size: 10px;
-  letter-spacing: 0.09em;
-  font-weight: 700;
+.brand img {
+  display: block;
+  width: 52px;
+  height: 52px;
 }
 .rollover {
   display: block;
@@ -846,11 +840,9 @@ button[disabled] {
     height: 80px;
     padding: 20px;
   }
-  .brand span {
-    font-size: 9px;
-  }
-  .brand svg {
-    width: 50px;
+  .brand img {
+    width: 44px;
+    height: 44px;
   }
   .hero {
     padding: 120px 20px 28px;

@@ -5,7 +5,8 @@ import { createAmbientVideos } from './ambient-video.js';
   // Hash routes own their scroll position, including browser reload/back/forward.
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   const $ = (s, root = document) => root.querySelector(s);
-  const snowLogo = $('.brand').innerHTML;
+  // Keep the intro wordmark independent of the header icon.
+  const snowLogo = `<svg viewBox="0 0 100 42" aria-hidden="true"><path d="M2 36 32 5l13 14L57 6l41 30H76L58 20 44 35 31 21 16 36Z" fill="currentColor"/></svg><span>SNOW MEDYA</span>`;
   const motionPreference = matchMedia('(prefers-reduced-motion: reduce)');
   let reduced = motionPreference.matches;
   const reelViewport = matchMedia('(max-width: 850px)');
